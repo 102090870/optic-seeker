@@ -50,9 +50,9 @@ public class PlayerMov : MonoBehaviour
 
     public enum MovementState
     {
+        crouching,
         walking,
         sprinting,
-        crouching,
         air
     }
 
@@ -69,7 +69,7 @@ public class PlayerMov : MonoBehaviour
     private void Update()
     {
         // half player height + 0.2f and need the ground to have a layer mask
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 1f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 1f + 0.1f, whatIsGround);
 
         MyInput();
         SpeedControl();
@@ -125,8 +125,9 @@ public class PlayerMov : MonoBehaviour
             state = MovementState.crouching;
             moveSpd = crouchSpeed;
         }
+
         // Mode - Sprinting
-        if(grounded && Input.GetKey(sprintKey))
+        else if(grounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
             moveSpd = sprintSpeed;
@@ -143,6 +144,7 @@ public class PlayerMov : MonoBehaviour
         else
         {
             state = MovementState.air;
+            grounded = false;
         }
     }
 
@@ -167,7 +169,7 @@ public class PlayerMov : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpd * 10f * airMultiplier, ForceMode.Force);
 
         //turn off gravity while on slope
-        rb.useGravity = !OnSlope();
+
     }
 
     private void SpeedControl()
@@ -221,6 +223,6 @@ public class PlayerMov : MonoBehaviour
 
     private Vector3 GetSlopeMoveDirection()
     {
-        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal.normalized);
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 }
