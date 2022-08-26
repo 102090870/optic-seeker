@@ -8,6 +8,7 @@ public class EnemyFieldOfView : MonoBehaviour
     [Range(0,360)]
     public float angle;
 
+    public GameObject player;
     public GameObject playerRef;
 
     public LayerMask targetMask;
@@ -15,8 +16,13 @@ public class EnemyFieldOfView : MonoBehaviour
 
     public bool canSeePlayer;
 
+    public int MoveSpeed = 4;
+    public int MaxDist = 1;
+    public int MinDist = 0;
+
     private void Start()
     {
+        player = GameObject.FindWithTag("Player");
         playerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
     }
@@ -30,6 +36,14 @@ public class EnemyFieldOfView : MonoBehaviour
         {
             yield return wait;
             FieldOfViewCheck();
+        }
+    }
+
+    private void Update()
+    {
+        if (canSeePlayer)
+        {
+            MoveEnemyTowardPlayer();
         }
     }
 
@@ -57,5 +71,24 @@ public class EnemyFieldOfView : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
+    }
+
+    private void MoveEnemyTowardPlayer()
+    {
+        transform.LookAt(player.transform);
+
+        if (Vector3.Distance(transform.position, player.transform.position) >= MinDist)
+        {
+
+            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+
+
+
+            if (Vector3.Distance(transform.position, player.transform.position) <= MaxDist)
+            {
+
+            }
+
+        }
     }
 }
