@@ -8,6 +8,9 @@ public class EnemyFieldOfView : MonoBehaviour
     [Range(0,360)]
     public float angle;
 
+    public Camera cam1;
+    public Camera cam2;
+
     public EnemyAI dosomething;
 
     public GameObject playerRef;
@@ -23,6 +26,8 @@ public class EnemyFieldOfView : MonoBehaviour
 
     private void Start()
     {
+        cam1.enabled = true;
+        cam2.enabled = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
     }
@@ -43,10 +48,14 @@ public class EnemyFieldOfView : MonoBehaviour
     {
         if (canSeePlayer)
         {
+            cam1.enabled = false;
+            cam2.enabled = true;
             dosomething.MoveEnemyTowardPlayer();
         }
         else
         {
+            cam1.enabled = true;
+            cam2.enabled = false;
             dosomething.Patroling();
         }
     }
