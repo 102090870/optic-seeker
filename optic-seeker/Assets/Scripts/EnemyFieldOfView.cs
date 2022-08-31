@@ -11,6 +11,8 @@ public class EnemyFieldOfView : MonoBehaviour
     public Camera cam1;
     public Camera cam2;
 
+    public FPSCAM Disrupt1;
+    public FPSCAM2 Disrupt2;
     public EnemyAI dosomething;
 
     public GameObject playerRef;
@@ -26,6 +28,8 @@ public class EnemyFieldOfView : MonoBehaviour
 
     private void Start()
     {
+        Disrupt1.enabled = true;
+        Disrupt2.enabled = false;
         cam1.enabled = true;
         cam2.enabled = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
@@ -48,12 +52,16 @@ public class EnemyFieldOfView : MonoBehaviour
     {
         if (canSeePlayer)
         {
+            Disrupt1.enabled = false;
+            Disrupt2.enabled = true;
             cam1.enabled = false;
             cam2.enabled = true;
             dosomething.MoveEnemyTowardPlayer();
         }
         else
         {
+            Disrupt1.enabled = true;
+            Disrupt2.enabled = false;
             cam1.enabled = true;
             cam2.enabled = false;
             dosomething.Patroling();
