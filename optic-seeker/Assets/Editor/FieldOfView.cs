@@ -1,12 +1,12 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(EnemyFieldOfView))]
+[CustomEditor(typeof(EnemyFOVAdvanced))]
 public class FieldOfView : Editor
 {
     private void OnSceneGUI()
     {
-        EnemyFieldOfView fov = (EnemyFieldOfView)target;
+        EnemyFOVAdvanced fov = (EnemyFOVAdvanced)target;
         Handles.color = Color.white;
         Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.radius);
 
