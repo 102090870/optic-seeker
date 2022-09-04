@@ -85,13 +85,15 @@ public class SonarFx : MonoBehaviour
     KeyCode sKey = KeyCode.S;
     KeyCode dKey = KeyCode.D;
 
-    IEnumerator intervalTimer()
-    {
-        playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-        _waveInterval = 150;
-        yield return new WaitForSeconds(5);
-        _waveInterval = 0;
-    }
+    //IEnumerator intervalTimer()
+    //{
+   
+    //    playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+    //    _waveInterval = 150;
+  
+    //    yield return new WaitForSeconds(5);
+    //    _waveInterval = 0;
+    //}
 
     void Awake()
     {
@@ -115,15 +117,24 @@ public class SonarFx : MonoBehaviour
 
     void Update()
     {
+
+        _waveInterval = 0;
         //_waveInterval = 0;
         Shader.SetGlobalColor(baseColorID, _baseColor);
         Shader.SetGlobalColor(waveColorID, _waveColor);
         Shader.SetGlobalColor(addColorID, _addColor);
 
         //WHILE INPUT IS TRUE THEN DO IT
+        //if (Input.GetButton("forward") || Input.GetButton("left") || Input.GetButton("backwards") || Input.GetButton("right"))
         if (Input.GetKey(jumpKey) || Input.GetKey(wKey) || Input.GetKey(aKey) || Input.GetKey(sKey) || Input.GetKey(dKey))
         {
-            StartCoroutine(intervalTimer());
+            //StopCoroutine(intervalTimer());
+            //playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+            // StartCoroutine(intervalTimer());
+            //_waveInterval = 0;
+
+            playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+            _waveInterval = 150;
         }
 
         var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, _waveSpeed);
