@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyFOVAdvanced : MonoBehaviour
 {
+    private PlayerMov playerMov;
+
     public float radius;
     [Range(0, 360)]
     public float angle;
@@ -26,6 +28,11 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public int MaxDist = 1;
     public int MinDist = 0;
 
+    private void Awake()
+    {
+        
+    }
+
     private void Start()
     {
         Disrupt1.enabled = true;
@@ -33,6 +40,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
         cam1.enabled = true;
         cam2.enabled = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerMov = playerRef.GetComponent<PlayerMov>();
         StartCoroutine(FOVRoutine());
     }
 
@@ -83,7 +91,10 @@ public class EnemyFOVAdvanced : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    canSeePlayer = true;
+                    if (!playerMov.isHidden)
+                    {
+                        canSeePlayer = true;
+                    }                    
                 else
                     canSeePlayer = false;
             }

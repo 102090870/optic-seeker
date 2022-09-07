@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMov : MonoBehaviour
 {
+    public bool isHidden = false;
+
     [Header("Movement")]
     private float moveSpd;
     public float walkSpeed;
