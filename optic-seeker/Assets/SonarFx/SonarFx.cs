@@ -20,6 +20,7 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -37,6 +38,8 @@ public class SonarFx : MonoBehaviour
     // Wave origin (used only in the spherical mode)
     [SerializeField] Vector3 _origin = Vector3.zero;
     public Vector3 origin { get { return _origin; } set { _origin = value; } }
+
+
 
     // Base color (albedo)
     [SerializeField] Color _baseColor = new Color(0.2f, 0.2f, 0.2f, 0);
@@ -75,6 +78,23 @@ public class SonarFx : MonoBehaviour
     int waveParamsID;
     int waveVectorID;
     int addColorID;
+    bool coroutineCheck = false;
+    Vector3 playerPosition;
+    KeyCode jumpKey = KeyCode.Space;
+    KeyCode wKey = KeyCode.W;
+    KeyCode aKey = KeyCode.A;
+    KeyCode sKey = KeyCode.S;
+    KeyCode dKey = KeyCode.D;
+
+    IEnumerator intervalTimer()
+    {
+        coroutineCheck = true;
+        _waveInterval = 150;
+
+        yield return new WaitForSeconds(5);
+        _waveInterval = 0;
+        coroutineCheck = false;
+    }
 
     void Awake()
     {
@@ -101,6 +121,17 @@ public class SonarFx : MonoBehaviour
         Shader.SetGlobalColor(baseColorID, _baseColor);
         Shader.SetGlobalColor(waveColorID, _waveColor);
         Shader.SetGlobalColor(addColorID, _addColor);
+        playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+
+        if (coroutineCheck == false)
+        {
+            //if (Input.GetButton("forward") || Input.GetButton("left") || Input.GetButton("backwards") || Input.GetButton("right"))
+            if (Input.GetKey(jumpKey) || Input.GetKey(wKey) || Input.GetKey(aKey) || Input.GetKey(sKey) || Input.GetKey(dKey))
+            {
+                StartCoroutine(intervalTimer());
+
+            }
+        }
 
         var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, _waveSpeed);
         Shader.SetGlobalVector(waveParamsID, param);
@@ -113,7 +144,9 @@ public class SonarFx : MonoBehaviour
         else
         {
             Shader.EnableKeyword("SONAR_SPHERICAL");
-            Shader.SetGlobalVector(waveVectorID, _origin);
+            Shader.SetGlobalVector(waveVectorID, playerPosition);
         }
     }
 }
+
+
