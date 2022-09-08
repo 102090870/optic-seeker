@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 17
+  controlID: 48
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 700
     height: 1307
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 678
     height: 1019
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 18
+  controlID: 49
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 19
+  controlID: 50
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -334,7 +334,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: 
+    m_NameFilter: Sunny
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -346,22 +346,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/SonarFx
+    - Assets
     m_Globs: []
-    m_OriginalText: 
+    m_OriginalText: Sunny
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/SonarFx
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: S:\Uni\digitalGamePrototyping\Code\opticSeeker\optic-seeker\optic-seeker
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 345d0000
-    m_LastClickedID: 23860
-    m_ExpandedIDs: 000000002e5d0000345d000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 545d0000
+    m_LastClickedID: 23892
+    m_ExpandedIDs: 00000000545d0000565d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -389,7 +389,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002e5d0000305d0000325d0000345d0000
+    m_ExpandedIDs: 00000000545d0000565d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -519,21 +519,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 38b1feffa2d9feffda27ffff8a82ffff1289ffff02afffff38fbffffb4700100147101008a71010058a40200feb1030074b20300a8b30300
+      m_ExpandedIDs: 06d3ffff1efbffff88600000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Character
-        m_OriginalName: Character
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 242292
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -768,9 +768,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 229.21056, y: 6.044952, z: 238.73415}
+    m_Target: {x: 274.26117, y: 33.268524, z: 218.1452}
     speed: 2
-    m_Value: {x: 229.21056, y: 6.044952, z: 238.73415}
+    m_Value: {x: 274.26117, y: 33.268524, z: 218.1452}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -817,13 +817,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.13926026, y: -0.20430732, z: 0.029377628, w: -0.9685087}
+    m_Target: {x: -0.082552925, y: -0.32083234, z: 0.028083561, w: -0.94311744}
     speed: 2
-    m_Value: {x: -0.13793628, y: -0.19998915, z: 0.028450603, w: -0.96962285}
+    m_Value: {x: -0.08255261, y: -0.32083112, z: 0.028083453, w: -0.94311386}
   m_Size:
-    m_Target: 9.102073
+    m_Target: 108.38898
     speed: 2
-    m_Value: 9.530966
+    m_Value: 113.496315
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -961,9 +961,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 1092
-    width: 2739
-    height: 267
+    y: 863
+    width: 2741
+    height: 496
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
