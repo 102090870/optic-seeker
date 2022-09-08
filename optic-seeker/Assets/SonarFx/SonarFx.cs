@@ -78,6 +78,7 @@ public class SonarFx : MonoBehaviour
     int waveParamsID;
     int waveVectorID;
     int addColorID;
+    bool coroutineCheck = false;
     Vector3 playerPosition;
     KeyCode jumpKey = KeyCode.Space;
     KeyCode wKey = KeyCode.W;
@@ -85,15 +86,15 @@ public class SonarFx : MonoBehaviour
     KeyCode sKey = KeyCode.S;
     KeyCode dKey = KeyCode.D;
 
-    //IEnumerator intervalTimer()
-    //{
-   
-    //    playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-    //    _waveInterval = 150;
-  
-    //    yield return new WaitForSeconds(5);
-    //    _waveInterval = 0;
-    //}
+    IEnumerator intervalTimer()
+    {
+        coroutineCheck = true;
+        _waveInterval = 150;
+
+        yield return new WaitForSeconds(5);
+        _waveInterval = 0;
+        coroutineCheck = false;
+    }
 
     void Awake()
     {
@@ -117,24 +118,19 @@ public class SonarFx : MonoBehaviour
 
     void Update()
     {
-
-        _waveInterval = 0;
-        //_waveInterval = 0;
         Shader.SetGlobalColor(baseColorID, _baseColor);
         Shader.SetGlobalColor(waveColorID, _waveColor);
         Shader.SetGlobalColor(addColorID, _addColor);
+        playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
 
-        //WHILE INPUT IS TRUE THEN DO IT
-        //if (Input.GetButton("forward") || Input.GetButton("left") || Input.GetButton("backwards") || Input.GetButton("right"))
-        if (Input.GetKey(jumpKey) || Input.GetKey(wKey) || Input.GetKey(aKey) || Input.GetKey(sKey) || Input.GetKey(dKey))
+        if (coroutineCheck == false)
         {
-            //StopCoroutine(intervalTimer());
-            //playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-            // StartCoroutine(intervalTimer());
-            //_waveInterval = 0;
-
-            playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-            _waveInterval = 150;
+            //if (Input.GetButton("forward") || Input.GetButton("left") || Input.GetButton("backwards") || Input.GetButton("right"))
+            if (Input.GetKey(jumpKey) || Input.GetKey(wKey) || Input.GetKey(aKey) || Input.GetKey(sKey) || Input.GetKey(dKey))
+            {
+                StartCoroutine(intervalTimer());
+              
+            }
         }
 
         var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, _waveSpeed);
