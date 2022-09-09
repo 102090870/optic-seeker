@@ -27,8 +27,6 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public int MaxDist = 1;
     public int MinDist = 0;
 
-    public float TimeforCameraswitch = 1.0f;
-
     private void Start()
     {
         Disrupt1.enabled = true;
@@ -54,11 +52,8 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
     private void Update()
     {
-        TimeforCameraswitch -= Time.deltaTime;
-
         if (canSeePlayer)
         {
-            TimeforCameraswitch = 5f;
             Disrupt1.enabled = false;
             Disrupt2.enabled = true;
             activateOutline.enabled = true;
@@ -68,10 +63,12 @@ public class EnemyFOVAdvanced : MonoBehaviour
         }
         else
         {
-            if (TimeforCameraswitch <= 1.0f)
-            {
-                timerEnded();
-            }
+            Disrupt1.enabled = true;
+            Disrupt2.enabled = false;
+            activateOutline.enabled = false;
+            cam1.enabled = true;
+            cam2.enabled = false;
+            dosomething.Patroling2();
         }
     }
 
@@ -99,15 +96,5 @@ public class EnemyFOVAdvanced : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
-    }
-
-    private void timerEnded()
-    {
-        Disrupt1.enabled = true;
-        Disrupt2.enabled = false;
-        activateOutline.enabled = false;
-        cam1.enabled = true;
-        cam2.enabled = false;
-        dosomething.Patroling2();
     }
 }
