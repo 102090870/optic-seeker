@@ -791,7 +791,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 3
-  m_Speed: 1
+  m_Speed: 0
   m_Acceleration: 12
   avoidancePriority: 99
   m_AngularSpeed: 120
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 10
-  angle: 96
+  angle: 91
   cam1: {fileID: 1688641087}
   cam2: {fileID: 2130196866}
   Disrupt1: {fileID: 1688641086}
