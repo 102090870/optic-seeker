@@ -791,7 +791,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 3
-  m_Speed: 10
+  m_Speed: 1
   m_Acceleration: 12
   avoidancePriority: 99
   m_AngularSpeed: 120
@@ -816,12 +816,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 10
-  angle: 123
+  angle: 96
   cam1: {fileID: 1688641087}
   cam2: {fileID: 2130196866}
   Disrupt1: {fileID: 1688641086}
   Disrupt2: {fileID: 1688641083}
   dosomething: {fileID: 573086205}
+  activateOutline: {fileID: 1170617887}
   playerRef: {fileID: 0}
   targetMask:
     serializedVersion: 2
@@ -941,7 +942,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573086202}
-  m_LocalRotation: {x: 0, y: 0.84465516, z: -0, w: -0.5353108}
+  m_LocalRotation: {x: 0, y: 0.6462572, z: -0, w: -0.76311964}
   m_LocalPosition: {x: 195.26, y: 2.2, z: 248.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -951,7 +952,7 @@ Transform:
   - {fileID: 2130196868}
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 244.73, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 279.48, z: 0}
 --- !u!1 &653276095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1759,7 @@ GameObject:
   - component: {fileID: 1170617884}
   - component: {fileID: 1170617886}
   - component: {fileID: 1170617885}
+  - component: {fileID: 1170617887}
   m_Layer: 7
   m_Name: Character
   m_TagString: Player
@@ -1828,6 +1830,24 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &1170617887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170617883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.22899652, g: 1, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1504874538
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public FPSCAM Disrupt1;
     public FPSCAM2 Disrupt2;
     public EnemyAIAdvanced dosomething;
+    public Outline activateOutline;
 
     public GameObject playerRef;
 
@@ -30,6 +31,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
     {
         Disrupt1.enabled = true;
         Disrupt2.enabled = false;
+        activateOutline.enabled = false;
         cam1.enabled = true;
         cam2.enabled = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
@@ -54,6 +56,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
         {
             Disrupt1.enabled = false;
             Disrupt2.enabled = true;
+            activateOutline.enabled = true;
             cam1.enabled = false;
             cam2.enabled = true;
             dosomething.ChasePlayer();
@@ -62,6 +65,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
         {
             Disrupt1.enabled = true;
             Disrupt2.enabled = false;
+            activateOutline.enabled = false;
             cam1.enabled = true;
             cam2.enabled = false;
             dosomething.Patroling2();
