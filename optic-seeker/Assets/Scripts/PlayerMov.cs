@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerMov : MonoBehaviour
 {
+
+    public SonarFx cameraobject;
+    public EnemyFOVAdvanced Enemybehavior;
+    public EnemyFOVAdvanced2 Enemybehavior2;
+
+    [Header("Hidden")]
     public bool isHidden = false;
 
     [Header("Movement")]
@@ -18,6 +24,10 @@ public class PlayerMov : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump;
+
+    [Header("Inventory")]
+    public float Knife;
+    public float FuelTank;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -226,5 +236,30 @@ public class PlayerMov : MonoBehaviour
     private Vector3 GetSlopeMoveDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Knife")
+        {
+            Destroy(collision.gameObject);
+            Knife++;
+        }
+
+        if (collision.gameObject.tag == "Fuel")
+        {
+            Destroy(collision.gameObject);
+            FuelTank++;
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if(Knife > 0.5f)
+            {
+                cameraobject.enabled = false;
+                Enemybehavior.enabled = false;
+                Enemybehavior2.enabled = true;
+            }
+        }
     }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyFOVAdvanced : MonoBehaviour
 {
-    private PlayerMov playerMov;
-
     public float radius;
     [Range(0, 360)]
     public float angle;
@@ -16,6 +14,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public FPSCAM Disrupt1;
     public FPSCAM2 Disrupt2;
     public EnemyAIAdvanced dosomething;
+    public Outline activateOutline;
 
     public GameObject playerRef;
 
@@ -28,19 +27,16 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public int MaxDist = 1;
     public int MinDist = 0;
 
-    private void Awake()
-    {
-        
-    }
+    public float TimeforCameraswitch = 1.0f;
 
     private void Start()
     {
         Disrupt1.enabled = true;
         Disrupt2.enabled = false;
+        activateOutline.enabled = false;
         cam1.enabled = true;
         cam2.enabled = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
-        playerMov = playerRef.GetComponent<PlayerMov>();
         StartCoroutine(FOVRoutine());
     }
 
@@ -58,21 +54,24 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
     private void Update()
     {
+        TimeforCameraswitch -= Time.deltaTime;
+
         if (canSeePlayer)
         {
+            TimeforCameraswitch = 2f;
             Disrupt1.enabled = false;
             Disrupt2.enabled = true;
+            activateOutline.enabled = true;
             cam1.enabled = false;
             cam2.enabled = true;
             dosomething.ChasePlayer();
         }
         else
         {
-            Disrupt1.enabled = true;
-            Disrupt2.enabled = false;
-            cam1.enabled = true;
-            cam2.enabled = false;
-            dosomething.Patroling2();
+            if (TimeforCameraswitch <= 1.0f)
+            {
+                timerEnded();
+            }
         }
     }
 
@@ -91,10 +90,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    if (!playerMov.isHidden)
-                    {
-                        canSeePlayer = true;
-                    }                    
+                    canSeePlayer = true;
                 else
                     canSeePlayer = false;
             }
@@ -103,5 +99,15 @@ public class EnemyFOVAdvanced : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
+    }
+
+    private void timerEnded()
+    {
+        Disrupt1.enabled = true;
+        Disrupt2.enabled = false;
+        activateOutline.enabled = false;
+        cam1.enabled = true;
+        cam2.enabled = false;
+        dosomething.Patroling2();
     }
 }
