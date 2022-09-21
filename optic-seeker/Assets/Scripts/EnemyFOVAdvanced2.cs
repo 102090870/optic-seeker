@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFOVAdvanced : MonoBehaviour
+public class EnemyFOVAdvanced2 : MonoBehaviour
 {
     public float radius;
     [Range(0, 360)]
@@ -58,20 +58,11 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
         if (canSeePlayer)
         {
-            TimeforCameraswitch = 2f;
-            Disrupt1.enabled = false;
-            Disrupt2.enabled = true;
-            activateOutline.enabled = true;
-            cam1.enabled = false;
-            cam2.enabled = true;
             dosomething.ChasePlayer();
         }
         else
         {
-            if (TimeforCameraswitch <= 1.0f)
-            {
-                timerEnded();
-            }
+            dosomething.Patroling2();
         }
     }
 
@@ -99,15 +90,5 @@ public class EnemyFOVAdvanced : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
-    }
-
-    private void timerEnded()
-    {
-        Disrupt1.enabled = true;
-        Disrupt2.enabled = false;
-        activateOutline.enabled = false;
-        cam1.enabled = true;
-        cam2.enabled = false;
-        dosomething.Patroling2();
     }
 }
