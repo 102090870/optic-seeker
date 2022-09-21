@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMov : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class PlayerMov : MonoBehaviour
     bool readyToJump;
 
     [Header("Inventory")]
+    public Image knifeimagebackground;
+    public RawImage knifeimage;
+    public Image fuelimagebackground;
+    public RawImage fuelimage;
+    public Text totalnumber;
     public float Knife;
     public float FuelTank;
 
@@ -242,12 +248,18 @@ public class PlayerMov : MonoBehaviour
     {
         if(collision.gameObject.tag == "Knife")
         {
+            knifeimage.enabled = true;
+            knifeimagebackground.enabled = true;
             Destroy(collision.gameObject);
             Knife++;
         }
 
+
         if (collision.gameObject.tag == "Fuel")
         {
+            fuelimage.enabled = true;
+            knifeimagebackground.enabled = true;
+            totalnumber.enabled = true;
             Destroy(collision.gameObject);
             FuelTank++;
         }
@@ -256,6 +268,8 @@ public class PlayerMov : MonoBehaviour
         {
             if(Knife > 0.5f)
             {
+                fuelimage.enabled = false;
+                knifeimagebackground.enabled = false;
                 cameraobject.enabled = false;
                 Enemybehavior.enabled = false;
                 Enemybehavior2.enabled = true;
