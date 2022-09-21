@@ -11,6 +11,7 @@ public class PlayerMov : MonoBehaviour
 
     [Header("Hidden")]
     public bool isHidden = false;
+
     [Header("Movement")]
     private float moveSpd;
     public float walkSpeed;
