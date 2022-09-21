@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerMov : MonoBehaviour
 {
+
     public SonarFx cameraobject;
     public EnemyFOVAdvanced Enemybehavior;
     public EnemyFOVAdvanced2 Enemybehavior2;
 
+    [Header("Hidden")]
+    public bool isHidden = false;
     [Header("Movement")]
     private float moveSpd;
     public float walkSpeed;
