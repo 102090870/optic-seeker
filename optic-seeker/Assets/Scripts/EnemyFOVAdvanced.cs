@@ -58,7 +58,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
         if (canSeePlayer)
         {
-            TimeforCameraswitch = 5f;
+            TimeforCameraswitch = 2f;
             Disrupt1.enabled = false;
             Disrupt2.enabled = true;
             activateOutline.enabled = true;

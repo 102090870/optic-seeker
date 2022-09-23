@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMov : MonoBehaviour
 {
+
+    public SonarFx cameraobject;
+    public EnemyFOVAdvanced Enemybehavior;
+    public EnemyFOVAdvanced2 Enemybehavior2;
+
+    [Header("Hidden")]
+    public bool isHidden = false;
+
     [Header("Movement")]
     private float moveSpd;
     public float walkSpeed;
@@ -16,6 +25,15 @@ public class PlayerMov : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump;
+
+    [Header("Inventory")]
+    public Image knifeimagebackground;
+    public RawImage knifeimage;
+    public Image fuelimagebackground;
+    public RawImage fuelimage;
+    public Text totalnumber;
+    public float Knife;
+    public float FuelTank;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -224,5 +242,38 @@ public class PlayerMov : MonoBehaviour
     private Vector3 GetSlopeMoveDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Knife")
+        {
+            knifeimage.enabled = true;
+            knifeimagebackground.enabled = true;
+            Destroy(collision.gameObject);
+            Knife++;
+        }
+
+
+        if (collision.gameObject.tag == "Fuel")
+        {
+            fuelimage.enabled = true;
+            knifeimagebackground.enabled = true;
+            totalnumber.enabled = true;
+            Destroy(collision.gameObject);
+            FuelTank++;
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if(Knife > 0.5f)
+            {
+                fuelimage.enabled = false;
+                knifeimagebackground.enabled = false;
+                cameraobject.enabled = false;
+                Enemybehavior.enabled = false;
+                Enemybehavior2.enabled = true;
+            }
+        }
     }
 }
