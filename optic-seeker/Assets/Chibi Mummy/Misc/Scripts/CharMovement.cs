@@ -18,7 +18,7 @@ public class CharMovement : MonoBehaviour
 	{
 		anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
-		anim.SetBool("isIdle", true);
+		anim.SetBool("crippled", true);
 	}
 	void Start ()
 	{
