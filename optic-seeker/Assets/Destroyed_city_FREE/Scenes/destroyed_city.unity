@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.171796, g: 1.3698118, b: 1.4745932, a: 1}
+  m_IndirectSpecularColor: {r: 1.1715047, g: 1.3698361, b: 1.4740256, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -4196,7 +4196,7 @@ MonoBehaviour:
   Disrupt2: {fileID: 458733160}
   dosomething: {fileID: 277762633}
   activateOutline: {fileID: 1376334779}
-  playerRef: {fileID: 0}
+  playerRef: {fileID: 1376334775}
   targetMask:
     serializedVersion: 2
     m_Bits: 128
@@ -4247,7 +4247,7 @@ MonoBehaviour:
   Disrupt2: {fileID: 458733160}
   dosomething: {fileID: 277762633}
   activateOutline: {fileID: 1376334779}
-  playerRef: {fileID: 0}
+  playerRef: {fileID: 1376334775}
   targetMask:
     serializedVersion: 2
     m_Bits: 128
@@ -14252,7 +14252,7 @@ MonoBehaviour:
   Disrupt2: {fileID: 458733160}
   dosomething: {fileID: 971514835}
   activateOutline: {fileID: 1376334779}
-  playerRef: {fileID: 0}
+  playerRef: {fileID: 1376334775}
   targetMask:
     serializedVersion: 2
     m_Bits: 128
@@ -14306,7 +14306,7 @@ MonoBehaviour:
   Disrupt2: {fileID: 458733160}
   dosomething: {fileID: 971514835}
   activateOutline: {fileID: 1376334779}
-  playerRef: {fileID: 0}
+  playerRef: {fileID: 1376334775}
   targetMask:
     serializedVersion: 2
     m_Bits: 128
