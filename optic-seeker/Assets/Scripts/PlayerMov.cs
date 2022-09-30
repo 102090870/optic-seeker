@@ -31,9 +31,11 @@ public class PlayerMov : MonoBehaviour
     public RawImage knifeimage;
     public Image fuelimagebackground;
     public RawImage fuelimage;
-    public Text totalnumber;
+    public Image keyimagebackground;
+    public RawImage keyimage;
     public float Knife;
     public float FuelTank;
+    public float Key;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -259,7 +261,6 @@ public class PlayerMov : MonoBehaviour
         {
             fuelimage.enabled = true;
             knifeimagebackground.enabled = true;
-            totalnumber.enabled = true;
             Destroy(collision.gameObject);
             FuelTank++;
         }
@@ -268,11 +269,28 @@ public class PlayerMov : MonoBehaviour
         {
             if(Knife > 0.5f)
             {
-                fuelimage.enabled = false;
+                knifeimage.enabled = false;
                 knifeimagebackground.enabled = false;
                 cameraobject.enabled = false;
                 Enemybehavior.enabled = false;
                 Enemybehavior2.enabled = true;
+            }
+        }
+
+        if (collision.gameObject.tag == "Key")
+        {
+            Destroy(collision.gameObject);
+            keyimage.enabled = true;
+            keyimagebackground.enabled = true;
+            Key++;
+        }
+
+        if (collision.gameObject.tag == "Door")
+        {
+            if(Key > 0.5f)
+            {
+                keyimage.enabled = false;
+                keyimagebackground.enabled = false;
             }
         }
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Knife
   - Enemy
+  - Key
   layers:
   - Default
   - TransparentFX

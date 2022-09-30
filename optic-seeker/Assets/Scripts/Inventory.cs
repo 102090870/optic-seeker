@@ -9,14 +9,16 @@ public class Inventory : MonoBehaviour
     public RawImage knifeimage;
     public Image fuelimagebackground;
     public RawImage fuelimage;
-    public Text totalnumber;
+    public Image keyimagebackground;
+    public RawImage keyimage;
     void Start()
     {
-        totalnumber.enabled = false;
+        keyimage.enabled = false;
         knifeimage.enabled = false;
         fuelimage.enabled = false;
         knifeimagebackground.enabled = false;
         fuelimagebackground.enabled = false;
+        keyimagebackground.enabled = false;
     }
 
     // Update is called once per frame
