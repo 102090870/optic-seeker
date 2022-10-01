@@ -21,6 +21,8 @@ public class hideTrigger : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerMov = player.GetComponent<PlayerMov>();
         model = GameObject.Find("mummy_rig");
+        thisCam.enabled = false;
+      
     }
     void Update()
     {
