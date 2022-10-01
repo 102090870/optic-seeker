@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class hideTrigger : MonoBehaviour
 {
+    public Camera PlayerCam;
+    public Camera EnemyCam;
+    public Camera thisCam;
+
+
     public GameObject hideText;
-    public GameObject player;
+    private GameObject player;
+    private GameObject model;
     private PlayerMov playerMov;
-    public static bool isHidden = false;
+    private bool OnTrigger = false;
+
+
     private void Awake()
     {
-         playerMov = player.GetComponent<PlayerMov>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerMov = player.GetComponent<PlayerMov>();
+        model = GameObject.Find("mummy_rig");
     }
     void Update()
     {
-
-
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        hideText.SetActive(true);
-    }
-    void OnTriggerStay(Collider other)
-    {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && OnTrigger)
         {
-            if (isHidden)
+            if (playerMov.isHidden)
             {
                 unhide();
             }
@@ -35,20 +36,40 @@ public class hideTrigger : MonoBehaviour
 
             }
         }
+
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+            hideText.SetActive(true);
+            OnTrigger = true;
+    }
+    void OnTriggerStay(Collider other)
+    {
+
     }
     void OnTriggerExit(Collider other)
     {
         hideText.SetActive(false);
+        OnTrigger = false;
         unhide();
     }
     void hide()
     {
-        hideText.SetActive(false);
         playerMov.isHidden = true;
+        player.SetActive(false);
+        PlayerCam.enabled = false;
+        EnemyCam.enabled = false;
+        thisCam.enabled = true;
+        hideText.SetActive(false);
     }
     void unhide()
     {
         playerMov.isHidden = false;
+        player.SetActive(true);
+        EnemyCam.enabled = false;
+        thisCam.enabled = false;
+        PlayerCam.enabled = true;
+        hideText.SetActive(false);
     }
 
 }

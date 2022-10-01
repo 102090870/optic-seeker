@@ -17,6 +17,8 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public Outline activateOutline;
 
     public GameObject playerRef;
+    private PlayerMov playerMov;
+
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
@@ -37,6 +39,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
         cam1.enabled = true;
         cam2.enabled = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerMov = playerRef.GetComponent<PlayerMov>();
         StartCoroutine(FOVRoutine());
     }
 
@@ -68,9 +71,15 @@ public class EnemyFOVAdvanced : MonoBehaviour
         }
         else
         {
-            if (TimeforCameraswitch <= 1.0f)
+            if (TimeforCameraswitch <= 1.0f && playerMov.isHidden == false)
             {
-                timerEnded();
+                    timerEnded();
+                
+            }
+            if (playerMov.isHidden == true)
+            {
+                isHiddenTimerEnded();
+
             }
         }
     }
@@ -90,7 +99,10 @@ public class EnemyFOVAdvanced : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    canSeePlayer = true;
+                    if (!playerMov.isHidden)
+                    {
+                        canSeePlayer = true;
+                    }
                 else
                     canSeePlayer = false;
             }
@@ -107,6 +119,16 @@ public class EnemyFOVAdvanced : MonoBehaviour
         Disrupt2.enabled = false;
         activateOutline.enabled = false;
         cam1.enabled = true;
+        cam2.enabled = false;
+        dosomething.Patroling2();
+    }
+
+    private void isHiddenTimerEnded()
+    {
+        Disrupt1.enabled = false;
+        Disrupt2.enabled = false;
+        activateOutline.enabled = false;
+        cam1.enabled = false;
         cam2.enabled = false;
         dosomething.Patroling2();
     }

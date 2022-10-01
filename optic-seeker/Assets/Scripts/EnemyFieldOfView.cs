@@ -16,6 +16,8 @@ public class EnemyFieldOfView : MonoBehaviour
     public EnemyAI dosomething;
 
     public GameObject playerRef;
+    private PlayerMov playerMov;
+
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
@@ -83,7 +85,7 @@ public class EnemyFieldOfView : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    canSeePlayer = true;
+                   canSeePlayer = true;
                 else
                     canSeePlayer = false;
             }

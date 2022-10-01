@@ -90,8 +90,10 @@ public class PlayerMov : MonoBehaviour
     {
         // half player height + 0.2f and need the ground to have a layer mask
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 1f + 0.1f, whatIsGround);
-
-        MyInput();
+        if (isHidden == false)
+        {
+            MyInput();
+        }
         SpeedControl();
         StateHandler();
 
@@ -105,7 +107,10 @@ public class PlayerMov : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (isHidden == false)
+        {
+            MovePlayer();
+        }
     }
 
     private void MyInput()
