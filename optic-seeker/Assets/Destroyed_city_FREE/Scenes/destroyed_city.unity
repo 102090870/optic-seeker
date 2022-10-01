@@ -6711,7 +6711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c600a37f5f81eb45b2d4961db14edef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuUIPause: {fileID: 0}
+  MenuUIPause: {fileID: 1337522225}
 --- !u!114 &453748774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32333,7 +32333,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977621058}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1977621061
 Camera:
   m_ObjectHideFlags: 0
@@ -32391,7 +32391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensX: 180
   sensY: 180
-  Orientation: {fileID: 0}
+  Orientation: {fileID: 498092087}
 --- !u!1 &1982226345
 GameObject:
   m_ObjectHideFlags: 0
@@ -33044,7 +33044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensX: 180
   sensY: 180
-  Orientation: {fileID: 0}
+  Orientation: {fileID: 498092087}
 --- !u!81 &2002161042
 AudioListener:
   m_ObjectHideFlags: 0
@@ -33052,7 +33052,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002161039}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2002161043
 Camera:
   m_ObjectHideFlags: 0
