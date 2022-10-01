@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMov : MonoBehaviour
 {
@@ -26,8 +27,15 @@ public class PlayerMov : MonoBehaviour
     bool readyToJump;
 
     [Header("Inventory")]
+    public Image knifeimagebackground;
+    public RawImage knifeimage;
+    public Image fuelimagebackground;
+    public RawImage fuelimage;
+    public Image keyimagebackground;
+    public RawImage keyimage;
     public float Knife;
     public float FuelTank;
+    public float Key;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -242,12 +250,17 @@ public class PlayerMov : MonoBehaviour
     {
         if(collision.gameObject.tag == "Knife")
         {
+            knifeimage.enabled = true;
+            knifeimagebackground.enabled = true;
             Destroy(collision.gameObject);
             Knife++;
         }
 
+
         if (collision.gameObject.tag == "Fuel")
         {
+            fuelimage.enabled = true;
+            knifeimagebackground.enabled = true;
             Destroy(collision.gameObject);
             FuelTank++;
         }
@@ -256,9 +269,28 @@ public class PlayerMov : MonoBehaviour
         {
             if(Knife > 0.5f)
             {
+                knifeimage.enabled = false;
+                knifeimagebackground.enabled = false;
                 cameraobject.enabled = false;
                 Enemybehavior.enabled = false;
                 Enemybehavior2.enabled = true;
+            }
+        }
+
+        if (collision.gameObject.tag == "Key")
+        {
+            Destroy(collision.gameObject);
+            keyimage.enabled = true;
+            keyimagebackground.enabled = true;
+            Key++;
+        }
+
+        if (collision.gameObject.tag == "Door")
+        {
+            if(Key > 0.5f)
+            {
+                keyimage.enabled = false;
+                keyimagebackground.enabled = false;
             }
         }
     }
