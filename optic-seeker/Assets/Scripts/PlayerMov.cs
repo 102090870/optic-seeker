@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EZDoor;
+using UnityEngine;
 
 public class PlayerMov : MonoBehaviour
 {
@@ -67,6 +69,11 @@ public class PlayerMov : MonoBehaviour
     Rigidbody rb;
 
     public MovementState state;
+
+
+    public Key key;
+    public string playerTag;
+    private KeyContainer keyContainer;
 
     public enum MovementState
     {
