@@ -1,13 +1,43 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+
+
 
 namespace EZDoor
 {
+
     [SelectionBase]
     [RequireComponent(typeof(BoxCollider))]
     public abstract class BaseDoor : MonoBehaviour, IInteractable
     {
+        //GameObject Character;
+
+       // PlayerMov playerScript;
+        //Character.GetComponent<PlayerMov>();
+
+        //private PlayerMov playerScript;
+
+        //private PlayerMov playerScript;
+        //public Image keyimagebackground;
+        //public RawImage keyimage;
+
+        public void Awake()
+        {
+           // Character = GameObject.Find("Character");
+           // playerScript = Character.GetComponent<PlayerScript>();
+        }
+        
+        private void start()
+        {
+           
+        }
+
+        private void Update()
+        {
+
+        }
         #region PUBLIC
         public enum FaceDirection { Forward, Back, Left, Right }
         public float moveSpeed = 2.0f;
@@ -51,6 +81,7 @@ namespace EZDoor
             {
                 isLocked = false;
                 PlayClip(unlocked);
+
             }
             else
             {

@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using EZDoor;
 
 public class DoorInteract : MonoBehaviour
 {
+    public Image keyimagebackground;
+    public RawImage keyimage;
     public Camera cam;
     public LayerMask layerMask;
     [Range(0.1f, 10f)] public float distance = 5.0f;
@@ -17,6 +20,11 @@ public class DoorInteract : MonoBehaviour
 
             if (inRange)
             {
+                if (hit.transform.tag.Equals("Interactable"))
+                {
+                    keyimage.enabled = false;
+                    keyimagebackground.enabled = false;
+                }
                 if (Input.GetMouseButtonDown(0))
                 {
                     IInteractable interact = hit.transform.GetComponent<IInteractable>();

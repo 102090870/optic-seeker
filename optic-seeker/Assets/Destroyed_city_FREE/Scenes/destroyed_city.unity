@@ -510,6 +510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4045709390a915f479a9af2177ad5a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyimagebackground: {fileID: 0}
+  keyimage: {fileID: 0}
   key: {fileID: 11400000, guid: c742d4ed7d57ad34288d26a393c31493, type: 2}
   playerTag: Player
 --- !u!1001 &55056442
@@ -7404,6 +7406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4045709390a915f479a9af2177ad5a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyimagebackground: {fileID: 1793319482}
+  keyimage: {fileID: 1567594346}
   key: {fileID: 11400000, guid: c742d4ed7d57ad34288d26a393c31493, type: 2}
   playerTag: Player
 --- !u!4 &473090635
@@ -21384,6 +21388,8 @@ MonoBehaviour:
     m_Bits: 64
   orientation: {fileID: 498092087}
   state: 0
+  key: {fileID: 11400000, guid: c742d4ed7d57ad34288d26a393c31493, type: 2}
+  playerTag: Player
 --- !u!54 &1376334778
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21443,6 +21449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39401d90f991aa4dbd340e3e70ecd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyimagebackground: {fileID: 1793319482}
+  keyimage: {fileID: 1567594346}
   cam: {fileID: 458733159}
   layerMask:
     serializedVersion: 2

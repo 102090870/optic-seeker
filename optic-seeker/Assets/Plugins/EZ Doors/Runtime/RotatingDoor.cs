@@ -1,6 +1,8 @@
 ﻿//using System.Threading.Tasks.DataFlow;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace EZDoor.Rotating
 {
@@ -20,7 +22,6 @@ namespace EZDoor.Rotating
         public Vector3 doorForward = Vector3.zero, closedDoorForward = Vector3.zero;
         public int RD_selection = -1;
         #endregion
-
         #region PRIVATE
         private int _closeAngle, _openAngle;
         private Transform _playerTransform;
@@ -31,6 +32,9 @@ namespace EZDoor.Rotating
         private WaitWhile _waitWhileClose;
         private WaitWhile _waitWhileOpen;
         #endregion
+      
+        public Image keyimagebackground;
+        public RawImage keyimage;
 
         private void Awake()
         {
@@ -52,6 +56,7 @@ namespace EZDoor.Rotating
 
         public void Start()
         {
+
             InitializeDoor();
             GetCloseRotation();
             GetOpenRotation();
@@ -293,6 +298,9 @@ namespace EZDoor.Rotating
 
             GetPlayerPosition(_playerTransform);
             UseDoor(RotateOpenCoroutine(), RotateCloseCoroutine());
+
+            keyimage.enabled = false;
+            keyimagebackground.enabled = false;
         }
 
         public override void OnTriggerEnter(Collider other)

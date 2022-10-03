@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 namespace EZDoor
 {
