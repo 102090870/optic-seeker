@@ -20,17 +20,18 @@ public class DoorInteract : MonoBehaviour
 
             if (inRange)
             {
-                if (hit.transform.tag.Equals("Interactable"))
-                {
-                    keyimage.enabled = false;
-                    keyimagebackground.enabled = false;
-                }
+
                 if (Input.GetMouseButtonDown(0))
                 {
                     IInteractable interact = hit.transform.GetComponent<IInteractable>();
 
                     if (interact != null)
                     {
+                        if (hit.transform.tag.Equals("Interactable"))
+                        {
+                            keyimage.enabled = false;
+                            keyimagebackground.enabled = false;
+                        }
                         interact.Interact();
                     }
                 }

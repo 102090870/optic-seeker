@@ -17,7 +17,6 @@ public class PickupKey : MonoBehaviour, IInteractable
 
     public void Pickup()
     {
-        
         keyimage.enabled = true;
         keyimagebackground.enabled = true;
         keyContainer.keys.Add(key);
