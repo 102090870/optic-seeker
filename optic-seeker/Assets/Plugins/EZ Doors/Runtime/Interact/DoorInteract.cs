@@ -29,6 +29,7 @@ public class DoorInteract : MonoBehaviour
                     {
                         if (hit.transform.tag.Equals("Interactable"))
                         {
+                            Debug.Log("DOOR HIT");
                             keyimage.enabled = false;
                             keyimagebackground.enabled = false;
                         }

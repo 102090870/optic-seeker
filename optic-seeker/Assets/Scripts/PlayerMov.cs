@@ -70,7 +70,7 @@ using EZDoor;
         public MovementState state;
 
 
-        public Key key;
+        public Key RustyKey;
         public string playerTag;
         private KeyContainer keyContainer;
 
@@ -290,7 +290,7 @@ using EZDoor;
 
             if (collision.gameObject.tag == "Key")
             {
-                keyContainer.keys.Add(key);
+                keyContainer.keys.Add(RustyKey);
                 Destroy(collision.gameObject);
                 keyimage.enabled = true;
                 keyimagebackground.enabled = true;
@@ -303,6 +303,7 @@ using EZDoor;
                 {
                     keyimage.enabled = false;
                     keyimagebackground.enabled = false;
+                    //Debug.Log("DOOR HIT");
                 }
             }
         }

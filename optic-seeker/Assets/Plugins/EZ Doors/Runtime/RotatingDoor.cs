@@ -299,8 +299,8 @@ namespace EZDoor.Rotating
             GetPlayerPosition(_playerTransform);
             UseDoor(RotateOpenCoroutine(), RotateCloseCoroutine());
 
-            keyimage.enabled = false;
-            keyimagebackground.enabled = false;
+            //keyimage.enabled = false;
+            //keyimagebackground.enabled = false;
         }
 
         public override void OnTriggerEnter(Collider other)

@@ -84,7 +84,7 @@ public class DialogueScript : MonoBehaviour
             {
             dialogueText.text = "I need to get out of here! where is the keys to this door?";
             anim.Play("DialogueAnimation");
-            Debug.Log("ANIMATION STOPPED PLAYING");
+            //Debug.Log("ANIMATION STOPPED PLAYING");
             animationCheck2 = true;
         }
         //if (anim.GetCurrentAnimatorStateInfo(0).IsName("DialogueAnimation") == true)
