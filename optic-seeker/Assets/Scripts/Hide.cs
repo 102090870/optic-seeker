@@ -27,10 +27,6 @@ public class Hide : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("E");
-        }
         if (Input.GetKeyDown(KeyCode.E) && OnTrigger)
         {
             if (playerMov.isHidden)
@@ -39,14 +35,10 @@ public class Hide : MonoBehaviour
             }
             else
             {
-                Debug.Log("exit");
                 hide();
-
             }
             
         }
-
-        ///Debug.Log("OnTrigger?: " + OnTrigger);
 
     }
     private void OnTriggerEnter(Collider other)

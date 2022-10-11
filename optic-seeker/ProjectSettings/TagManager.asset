@@ -9,6 +9,8 @@ TagManager:
   - Key
   - Interactable
   - Hide
+  - Fuel
+  - Car
   layers:
   - Default
   - TransparentFX

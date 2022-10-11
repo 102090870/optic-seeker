@@ -14,6 +14,7 @@ using EZDoor;
         [Header("Hidden")]
         public bool isHidden = false;
 
+
         [Header("Movement")]
         private float moveSpd;
         public float walkSpeed;
@@ -73,6 +74,10 @@ using EZDoor;
         public Key RustyKey;
         public string playerTag;
         private KeyContainer keyContainer;
+        
+        [Header("Car Text")]
+        public GameObject FuelText;
+        public GameObject noFuelText;
 
         public enum MovementState
         {
@@ -306,9 +311,39 @@ using EZDoor;
                     //Debug.Log("DOOR HIT");
                 }
             }
-        }
 
-        private void Awake()
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Car")
+        {
+            if (FuelTank > 0.5f)
+            {
+                fuelimage.enabled = false;
+                fuelimagebackground.enabled = false;
+                FuelText.SetActive(true);
+
+            }
+            else
+            {
+
+                noFuelText.SetActive(true);
+
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Car")
+        {
+            noFuelText.SetActive(false);
+            FuelText.SetActive(false);
+
+        }
+    }
+
+
+    private void Awake()
         {
             keyContainer = GameObject.FindWithTag(playerTag).GetComponent<KeyContainer>();
         }
