@@ -271,7 +271,7 @@ using EZDoor;
             if (collision.gameObject.tag == "Fuel")
             {
                 fuelimage.enabled = true;
-                knifeimagebackground.enabled = true;
+                fuelimagebackground.enabled = true;
                 Destroy(collision.gameObject);
                 FuelTank++;
             }
