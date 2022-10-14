@@ -23695,6 +23695,8 @@ MonoBehaviour:
   Knife: 0
   FuelTank: 0
   Key: 0
+  healthAmount: 100
+  invulnerabilitytimer: 4
   crouchSpeed: 1
   crouchYscale: 0.5
   jumpKey: 32
