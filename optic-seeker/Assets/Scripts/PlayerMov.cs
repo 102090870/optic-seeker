@@ -38,8 +38,9 @@ public class PlayerMov : MonoBehaviour
     public float Knife;
     public float FuelTank;
     public float Key;
-        
+
     [Header("Health")]
+    public Image healthBar;
     public float healthAmount;
     private float invulnerability = 1;
     public float invulnerabilitytimer;
@@ -336,9 +337,10 @@ public class PlayerMov : MonoBehaviour
         }
     }
 
-    private void TakeDamage(float Damage)
+    public void TakeDamage(float Damage)
     {
         healthAmount -= Damage;
+        healthBar.fillAmount = healthAmount / 100;
     }
 
     private void Death()

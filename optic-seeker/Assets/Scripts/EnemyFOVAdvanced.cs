@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyFOVAdvanced : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public FPSCAM2 Disrupt2;
     public EnemyAIAdvanced dosomething;
     public Outline activateOutline;
+    public RawImage Crosshair;
 
     public GameObject playerRef;
     private PlayerMov playerMov;
@@ -61,6 +63,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
         if (canSeePlayer)
         {
+            Crosshair.enabled = false;
             TimeforCameraswitch = 2f;
             Disrupt1.enabled = false;
             Disrupt2.enabled = true;
@@ -115,6 +118,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
     private void timerEnded()
     {
+        Crosshair.enabled = true;
         Disrupt1.enabled = true;
         Disrupt2.enabled = false;
         activateOutline.enabled = false;

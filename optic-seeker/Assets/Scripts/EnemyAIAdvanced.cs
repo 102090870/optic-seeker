@@ -88,6 +88,7 @@ public class EnemyAIAdvanced : MonoBehaviour
 
     public void ChasePlayer()
     {
+        agent.speed = 5;
         agent.SetDestination(player.position);
     }
 }
