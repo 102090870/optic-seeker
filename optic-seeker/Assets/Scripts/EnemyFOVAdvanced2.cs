@@ -20,6 +20,8 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
+	
+	public GameObject fadeEffect;
 
     public bool canSeePlayer;
 
@@ -58,7 +60,8 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
 
         if (canSeePlayer)
         {
-            dosomething.ChasePlayer();
+            fadeEffect.SetActive(true);
+			dosomething.ChasePlayer();
         }
         else
         {
