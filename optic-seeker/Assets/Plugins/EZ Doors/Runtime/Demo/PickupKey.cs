@@ -25,6 +25,6 @@ public class PickupKey : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Pickup();
+        //Pickup();
     }
 }

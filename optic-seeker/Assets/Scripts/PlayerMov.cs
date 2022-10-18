@@ -88,6 +88,8 @@ public class PlayerMov : MonoBehaviour
     public GameObject FuelText;
     public GameObject noFuelText;
 
+    public SonarFx sonar;
+
     public enum MovementState
     {
         crouching,
@@ -345,6 +347,9 @@ public class PlayerMov : MonoBehaviour
                 keyimage.enabled = false;
                 keyimagebackground.enabled = false;
                 //Debug.Log("DOOR HIT");
+                //cameraobject.enabled = true;
+                startGameTimer();
+                cameraobject.enabled = true;
             }
         }
     }
@@ -403,6 +408,18 @@ public class PlayerMov : MonoBehaviour
     private void Awake()
     {
          keyContainer = GameObject.FindWithTag(playerTag).GetComponent<KeyContainer>();
+    }
+
+    IEnumerator startGameTimer()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
+    public void startScriptTimer()
+    {
+        
+        startGameTimer();
+        cameraobject.enabled = true;
     }
 }
 
