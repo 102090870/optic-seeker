@@ -364,9 +364,9 @@ public class PlayerMov : MonoBehaviour
     {
         //Put function here to happen when the player runs out of health
         Destroy(gameObject);
+        SceneManager.LoadScene("LossEndScene");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        SceneManager.LoadScene("LossEndScene");
 
     }
     
