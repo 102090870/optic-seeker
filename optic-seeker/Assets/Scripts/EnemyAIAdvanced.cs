@@ -11,6 +11,7 @@ public class EnemyAIAdvanced : MonoBehaviour
     public Transform travelP1;
     public Transform travelP2;
     public Transform travelP3;
+    public Transform travelP4;
 
     public float turnorder = 0f;
 
@@ -22,6 +23,7 @@ public class EnemyAIAdvanced : MonoBehaviour
     public Vector3 walkPoint1;
     public Vector3 walkPoint2;
     public Vector3 walkPoint3;
+    public Vector3 walkPoint4;
     public bool walkPointSet;
 
     private void Start()
@@ -47,6 +49,7 @@ public class EnemyAIAdvanced : MonoBehaviour
         walkPoint1 = new Vector3(travelP1.position.x, transform.position.y, travelP1.position.z);
         walkPoint2 = new Vector3(travelP2.position.x, transform.position.y, travelP2.position.z);
         walkPoint3 = new Vector3(travelP3.position.x, transform.position.y, travelP3.position.z);
+        walkPoint4 = new Vector3(travelP4.position.x, transform.position.y, travelP4.position.z);
 
 
         if (turnorder < 1f && turnorder >= 0f)
@@ -75,9 +78,21 @@ public class EnemyAIAdvanced : MonoBehaviour
 
         if (turnorder < 3f && turnorder >= 2f)
         {
-            agent.SetDestination(walkPoint1);
+            agent.SetDestination(walkPoint3);
 
-            Vector3 distanceToWalkPoint = transform.position - walkPoint1;
+            Vector3 distanceToWalkPoint = transform.position - walkPoint3;
+
+            if (distanceToWalkPoint.magnitude < 1f)
+            {
+                turnorder++;
+            }
+        }
+
+        if (turnorder < 4f && turnorder >= 3f)
+        {
+            agent.SetDestination(walkPoint4);
+
+            Vector3 distanceToWalkPoint = transform.position - walkPoint4;
 
             if (distanceToWalkPoint.magnitude < 1f)
             {
