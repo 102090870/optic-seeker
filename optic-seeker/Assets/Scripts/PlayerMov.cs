@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using EZDoor;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMov : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class PlayerMov : MonoBehaviour
 
     [Header("Hidden")]
     public bool isHidden = false;
+    private bool onLeaveTrigger = false;
 
 
     [Header("Movement")]
@@ -129,6 +132,15 @@ public class PlayerMov : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+        if ((onLeaveTrigger) && (FuelTank > 0.5f) && (Input.GetKeyDown(KeyCode.E)))
+        {
+            SceneManager.LoadScene("WinEndScene");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+        }
+
 
     }
 
@@ -347,6 +359,9 @@ public class PlayerMov : MonoBehaviour
     {
         //Put function here to happen when the player runs out of health
         Destroy(gameObject);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SceneManager.LoadScene("LossEndScene");
 
     }
     
@@ -359,7 +374,8 @@ public class PlayerMov : MonoBehaviour
                 fuelimage.enabled = false;
                 fuelimagebackground.enabled = false;
                 FuelText.SetActive(true);
-
+                onLeaveTrigger = true;
+                
             }
             else
             {
@@ -369,6 +385,7 @@ public class PlayerMov : MonoBehaviour
             }
         }
     }
+
         
     
     private void OnTriggerExit(Collider other)
@@ -377,6 +394,7 @@ public class PlayerMov : MonoBehaviour
         {
             noFuelText.SetActive(false);
             FuelText.SetActive(false);
+            onLeaveTrigger = false;
 
         }
     }

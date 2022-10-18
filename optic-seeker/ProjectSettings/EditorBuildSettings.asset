@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Destroyed_city_FREE/Scenes/destroyed_city.unity
     guid: dab52a771d551ca40930496e8e13757a
+  - enabled: 1
+    path: Assets/Scenes/WinEndScene.unity
+    guid: a71e672d1e79fa04cb652f6cd9bf072d
+  - enabled: 1
+    path: Assets/Scenes/LossEndScene.unity
+    guid: b9afb063d6f470247bd47ebe93d6dd9f
   m_configObjects: {}
