@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Knife
   - Enemy
+  - Key
+  - Interactable
+  - Hide
+  - Fuel
+  - Car
   layers:
   - Default
   - TransparentFX

@@ -24,7 +24,6 @@ public class MenuPause : MonoBehaviour
     }
     public void Resume()
     {
-        Debug.Log("resume");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         MenuUIPause.SetActive(false);
@@ -35,7 +34,6 @@ public class MenuPause : MonoBehaviour
     }
     void Plause()
     {
-        Debug.Log("plause");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         MenuUIPause.SetActive(true);

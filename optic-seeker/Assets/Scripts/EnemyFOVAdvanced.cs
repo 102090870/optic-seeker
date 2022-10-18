@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyFOVAdvanced : MonoBehaviour
 {
@@ -15,8 +16,11 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public FPSCAM2 Disrupt2;
     public EnemyAIAdvanced dosomething;
     public Outline activateOutline;
+    public RawImage Crosshair;
 
     public GameObject playerRef;
+    private PlayerMov playerMov;
+
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
@@ -37,6 +41,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
         cam1.enabled = true;
         cam2.enabled = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerMov = playerRef.GetComponent<PlayerMov>();
         StartCoroutine(FOVRoutine());
     }
 
@@ -58,6 +63,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
         if (canSeePlayer)
         {
+            Crosshair.enabled = false;
             TimeforCameraswitch = 2f;
             Disrupt1.enabled = false;
             Disrupt2.enabled = true;
@@ -68,9 +74,15 @@ public class EnemyFOVAdvanced : MonoBehaviour
         }
         else
         {
-            if (TimeforCameraswitch <= 1.0f)
+            if (TimeforCameraswitch <= 1.0f && playerMov.isHidden == false)
             {
-                timerEnded();
+                    timerEnded();
+                
+            }
+            if (playerMov.isHidden == true)
+            {
+                isHiddenTimerEnded();
+
             }
         }
     }
@@ -90,7 +102,10 @@ public class EnemyFOVAdvanced : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    canSeePlayer = true;
+                    if (!playerMov.isHidden)
+                    {
+                        canSeePlayer = true;
+                    }
                 else
                     canSeePlayer = false;
             }
@@ -103,10 +118,21 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
     private void timerEnded()
     {
+        Crosshair.enabled = true;
         Disrupt1.enabled = true;
         Disrupt2.enabled = false;
         activateOutline.enabled = false;
         cam1.enabled = true;
+        cam2.enabled = false;
+        dosomething.Patroling2();
+    }
+
+    private void isHiddenTimerEnded()
+    {
+        Disrupt1.enabled = false;
+        Disrupt2.enabled = false;
+        activateOutline.enabled = false;
+        cam1.enabled = false;
         cam2.enabled = false;
         dosomething.Patroling2();
     }

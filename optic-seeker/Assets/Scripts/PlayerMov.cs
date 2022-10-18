@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EZDoor;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMov : MonoBehaviour
 {
@@ -12,6 +15,8 @@ public class PlayerMov : MonoBehaviour
 
     [Header("Hidden")]
     public bool isHidden = false;
+    private bool onLeaveTrigger = false;
+
 
     [Header("Movement")]
     private float moveSpd;
@@ -31,9 +36,17 @@ public class PlayerMov : MonoBehaviour
     public RawImage knifeimage;
     public Image fuelimagebackground;
     public RawImage fuelimage;
-    public Text totalnumber;
+    public Image keyimagebackground;
+    public RawImage keyimage;
     public float Knife;
     public float FuelTank;
+    public float Key;
+
+    [Header("Health")]
+    public Image healthBar;
+    public float healthAmount;
+    private float invulnerability = 1;
+    public float invulnerabilitytimer;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -66,6 +79,15 @@ public class PlayerMov : MonoBehaviour
 
     public MovementState state;
 
+
+    public Key RustyKey;
+    public string playerTag;
+    private KeyContainer keyContainer;
+        
+    [Header("Car Text")]
+    public GameObject FuelText;
+    public GameObject noFuelText;
+
     public enum MovementState
     {
         crouching,
@@ -86,10 +108,22 @@ public class PlayerMov : MonoBehaviour
 
     private void Update()
     {
+        if (healthAmount <= 0)
+        {
+            Death();
+        }
+            
+        if (invulnerability > 0)
+        {
+            invulnerability -= Time.deltaTime;
+        }
+
         // half player height + 0.2f and need the ground to have a layer mask
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 1f + 0.1f, whatIsGround);
-
-        MyInput();
+        if (isHidden == false)
+        {
+            MyInput();
+        }
         SpeedControl();
         StateHandler();
 
@@ -99,11 +133,23 @@ public class PlayerMov : MonoBehaviour
         else
             rb.drag = 0;
 
+        if ((onLeaveTrigger) && (FuelTank > 0.5f) && (Input.GetKeyDown(KeyCode.E)))
+        {
+            SceneManager.LoadScene("WinEndScene");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+        }
+
+
     }
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (isHidden == false)
+        {
+            MovePlayer();
+        }
     }
 
     private void MyInput()
@@ -112,7 +158,7 @@ public class PlayerMov : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
 
@@ -145,7 +191,7 @@ public class PlayerMov : MonoBehaviour
         }
 
         // Mode - Sprinting
-        else if(grounded && Input.GetKey(sprintKey))
+        else if (grounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
             moveSpd = sprintSpeed;
@@ -161,8 +207,8 @@ public class PlayerMov : MonoBehaviour
         //Mode - Air
         else
         {
-            state = MovementState.air;
-            grounded = false;
+                state = MovementState.air;
+                grounded = false;
         }
     }
 
@@ -236,7 +282,7 @@ public class PlayerMov : MonoBehaviour
             return angle < maxSlopeAngle && angle != 0;
         }
 
-        return false;
+            return false;
     }
 
     private Vector3 GetSlopeMoveDirection()
@@ -246,7 +292,7 @@ public class PlayerMov : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Knife")
+        if (collision.gameObject.tag == "Knife")
         {
             knifeimage.enabled = true;
             knifeimagebackground.enabled = true;
@@ -258,22 +304,105 @@ public class PlayerMov : MonoBehaviour
         if (collision.gameObject.tag == "Fuel")
         {
             fuelimage.enabled = true;
-            knifeimagebackground.enabled = true;
-            totalnumber.enabled = true;
+            fuelimagebackground.enabled = true;
             Destroy(collision.gameObject);
             FuelTank++;
         }
 
         if (collision.gameObject.tag == "Enemy")
         {
-            if(Knife > 0.5f)
+            if (Knife > 0.5f)
             {
-                fuelimage.enabled = false;
+                Knife = 0;
+                knifeimage.enabled = false;
                 knifeimagebackground.enabled = false;
                 cameraobject.enabled = false;
                 Enemybehavior.enabled = false;
                 Enemybehavior2.enabled = true;
             }
+
+            if (Knife < 0.5f && invulnerability <= 0)
+            {
+                TakeDamage(20);
+                invulnerability = invulnerabilitytimer;
+                    
+            }
+        }
+
+        if (collision.gameObject.tag == "Key")
+        {
+            keyContainer.keys.Add(RustyKey);
+            Destroy(collision.gameObject);
+            keyimage.enabled = true;
+            keyimagebackground.enabled = true;
+            Key++;
+        }
+
+        if (collision.gameObject.tag == "Interactable")
+        {
+            if (Key > 0.5f)
+            {
+                keyimage.enabled = false;
+                keyimagebackground.enabled = false;
+                //Debug.Log("DOOR HIT");
+            }
         }
     }
+
+    public void TakeDamage(float Damage)
+    {
+        healthAmount -= Damage;
+        healthBar.fillAmount = healthAmount / 100;
+    }
+
+    private void Death()
+    {
+        //Put function here to happen when the player runs out of health
+        Destroy(gameObject);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SceneManager.LoadScene("LossEndScene");
+
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Car")
+        {
+            if (FuelTank > 0.5f)
+            {
+                fuelimage.enabled = false;
+                fuelimagebackground.enabled = false;
+                FuelText.SetActive(true);
+                onLeaveTrigger = true;
+                
+            }
+            else
+            {
+
+                noFuelText.SetActive(true);
+
+            }
+        }
+    }
+
+        
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Car")
+        {
+            noFuelText.SetActive(false);
+            FuelText.SetActive(false);
+            onLeaveTrigger = false;
+
+        }
+    }
+
+
+    private void Awake()
+    {
+         keyContainer = GameObject.FindWithTag(playerTag).GetComponent<KeyContainer>();
+    }
 }
+
