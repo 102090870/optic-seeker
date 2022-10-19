@@ -136,7 +136,7 @@ public class EnemyAIAdvanced : MonoBehaviour
         }
         else
         {
-            agent.speed = 6;
+            agent.speed = 8;
             agent.angularSpeed = 120;
             agent.SetDestination(player.position);
         }
