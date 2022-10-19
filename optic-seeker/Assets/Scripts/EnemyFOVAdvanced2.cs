@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyFOVAdvanced2 : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
     public FPSCAM2 Disrupt2;
     public EnemyAIAdvanced dosomething;
     public Outline activateOutline;
+    public RawImage Crosshair;
 
     public GameObject playerRef;
+    private PlayerMov playerMov;
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
@@ -37,19 +40,6 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
         cam1.enabled = true;
         cam2.enabled = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(FOVRoutine());
-    }
-
-    private IEnumerator FOVRoutine()
-    {
-        float delay = 0.2f;
-        WaitForSeconds wait = new WaitForSeconds(delay);
-
-        while (true)
-        {
-            yield return wait;
-            FieldOfViewCheck();
-        }
     }
 
     private void Update()
@@ -62,7 +52,16 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
         }
         else
         {
-            dosomething.Patroling2();
+            if (TimeforCameraswitch <= 1.0f && playerMov.isHidden == false)
+            {
+                timerEnded();
+
+            }
+            if (playerMov.isHidden == true)
+            {
+                isHiddenTimerEnded();
+
+            }
         }
     }
 
@@ -90,5 +89,14 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
+    }
+    private void timerEnded()
+    {
+        dosomething.Patroling2();
+    }
+
+    private void isHiddenTimerEnded()
+    {
+        dosomething.Patroling2();
     }
 }

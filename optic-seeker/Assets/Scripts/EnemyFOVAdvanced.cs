@@ -134,7 +134,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
         Disrupt1.enabled = false;
         Disrupt2.enabled = false;
         activateOutline.enabled = false;
-        cam1.enabled = false;
+        cam1.enabled = true;
         cam2.enabled = false;
         dosomething.Patroling2();
     }

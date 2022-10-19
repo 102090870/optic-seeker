@@ -46,6 +46,7 @@ public class EnemyAIAdvanced : MonoBehaviour
 
     public void Patroling2()
     {
+        agent.speed = 6;
         walkPoint1 = new Vector3(travelP1.position.x, transform.position.y, travelP1.position.z);
         walkPoint2 = new Vector3(travelP2.position.x, transform.position.y, travelP2.position.z);
         walkPoint3 = new Vector3(travelP3.position.x, transform.position.y, travelP3.position.z);
@@ -103,7 +104,7 @@ public class EnemyAIAdvanced : MonoBehaviour
 
     public void ChasePlayer()
     {
-        agent.speed = 5;
+        agent.speed = 3;
         agent.SetDestination(player.position);
     }
 }
