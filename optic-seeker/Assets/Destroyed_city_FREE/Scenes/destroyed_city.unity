@@ -18018,7 +18018,7 @@ RectTransform:
   m_GameObject: {fileID: 915677195}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.61935, y: 0.61935, z: 1.2387}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1364655200}
@@ -18042,14 +18042,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.9526844, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: e06760b567961114798e5eb1160077dd, type: 3}
+  m_Texture: {fileID: 2800000, guid: 2efa915d4f90a574189ec419a69619e0, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
