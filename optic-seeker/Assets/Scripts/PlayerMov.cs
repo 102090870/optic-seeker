@@ -45,8 +45,6 @@ public class PlayerMov : MonoBehaviour
     [Header("Health")]
     public Image healthBar;
     public float healthAmount;
-    private float invulnerability = 1;
-    public float invulnerabilitytimer;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -113,11 +111,6 @@ public class PlayerMov : MonoBehaviour
         if (healthAmount <= 0)
         {
             Death();
-        }
-            
-        if (invulnerability > 0)
-        {
-            invulnerability -= Time.deltaTime;
         }
 
         // half player height + 0.2f and need the ground to have a layer mask
@@ -321,13 +314,6 @@ public class PlayerMov : MonoBehaviour
                 cameraobject.enabled = false;
                 Enemybehavior.enabled = false;
                 Enemybehavior2.enabled = true;
-            }
-
-            if (Knife < 0.5f && invulnerability <= 0)
-            {
-                TakeDamage(20);
-                invulnerability = invulnerabilitytimer;
-                    
             }
         }
 

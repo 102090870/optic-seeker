@@ -4,7 +4,7 @@ using UnityEngine;
 [CustomEditor(typeof(EnemyFOVAdvanced2))]
 public class FieldOfView2 : Editor
 {
-    private void OnSceneGUI2()
+    private void OnSceneGUI()
     {
         EnemyFOVAdvanced2 fov = (EnemyFOVAdvanced2)target;
         Handles.color = Color.white;

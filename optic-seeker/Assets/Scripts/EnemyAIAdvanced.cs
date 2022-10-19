@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyAIAdvanced : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public PlayerMov damage;
 
     public Transform player;
     public Transform travelP1;
@@ -18,6 +19,9 @@ public class EnemyAIAdvanced : MonoBehaviour
 
     public LayerMask whatIsGround;
 
+    private float Attackcooldown = 1;
+    public float Attacktimer;
+
 
     //Patroling
     public Vector3 walkPoint1;
@@ -25,6 +29,7 @@ public class EnemyAIAdvanced : MonoBehaviour
     public Vector3 walkPoint3;
     public Vector3 walkPoint4;
     public bool walkPointSet;
+    public float pausetime = 0f;
 
     private void Start()
     {
@@ -42,11 +47,28 @@ public class EnemyAIAdvanced : MonoBehaviour
         {
             turnorder = 0;
         }
+
+        if (Attackcooldown > 0)
+        {
+            Attackcooldown -= Time.deltaTime;
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (Attackcooldown <= 0)
+        {
+            damage.TakeDamage(20);
+            Attackcooldown = Attacktimer;
+
+        }
     }
 
     public void Patroling2()
     {
+        pausetime = 0;
         agent.speed = 6;
+        agent.angularSpeed = 120;
         walkPoint1 = new Vector3(travelP1.position.x, transform.position.y, travelP1.position.z);
         walkPoint2 = new Vector3(travelP2.position.x, transform.position.y, travelP2.position.z);
         walkPoint3 = new Vector3(travelP3.position.x, transform.position.y, travelP3.position.z);
@@ -104,7 +126,19 @@ public class EnemyAIAdvanced : MonoBehaviour
 
     public void ChasePlayer()
     {
-        agent.speed = 3;
-        agent.SetDestination(player.position);
+
+        pausetime += Time.deltaTime;
+
+        if (pausetime < 2)
+        {
+            agent.speed = 0;
+            agent.angularSpeed = 0;
+        }
+        else
+        {
+            agent.speed = 6;
+            agent.angularSpeed = 120;
+            agent.SetDestination(player.position);
+        }
     }
 }

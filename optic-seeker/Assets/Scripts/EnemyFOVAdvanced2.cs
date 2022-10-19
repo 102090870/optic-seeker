@@ -19,7 +19,7 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
     public RawImage Crosshair;
 
     public GameObject playerRef;
-    private PlayerMov playerMov;
+    public PlayerMov playerMov;
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
@@ -40,6 +40,19 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
         cam1.enabled = true;
         cam2.enabled = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(FOVRoutine());
+    }
+
+    private IEnumerator FOVRoutine()
+    {
+        float delay = 0.2f;
+        WaitForSeconds wait = new WaitForSeconds(delay);
+
+        while (true)
+        {
+            yield return wait;
+            FieldOfViewCheck();
+        }
     }
 
     private void Update()
@@ -49,6 +62,7 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
         if (canSeePlayer)
         {
             dosomething.ChasePlayer();
+            TimeforCameraswitch = 2f;
         }
         else
         {

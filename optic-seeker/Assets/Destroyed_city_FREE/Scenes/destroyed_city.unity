@@ -5142,6 +5142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 277762631}
+  damage: {fileID: 0}
   player: {fileID: 1376334776}
   travelP1: {fileID: 425839784}
   travelP2: {fileID: 859133356}
@@ -5151,11 +5152,13 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  Attacktimer: 2
   walkPoint1: {x: 0, y: 0, z: 0}
   walkPoint2: {x: 0, y: 0, z: 0}
   walkPoint3: {x: 0, y: 0, z: 0}
   walkPoint4: {x: 0, y: 0, z: 0}
   walkPointSet: 0
+  pausetime: 0
 --- !u!114 &277762634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5168,8 +5171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87a34184cc25dd40909187d6918c88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0
-  angle: 0
+  radius: 10
+  angle: 100
   cam1: {fileID: 458733159}
   cam2: {fileID: 1529345961}
   Disrupt1: {fileID: 458733157}
@@ -5178,6 +5181,7 @@ MonoBehaviour:
   activateOutline: {fileID: 1376334779}
   Crosshair: {fileID: 915677197}
   playerRef: {fileID: 1376334775}
+  playerMov: {fileID: 1376334777}
   targetMask:
     serializedVersion: 2
     m_Bits: 128
@@ -26348,7 +26352,6 @@ MonoBehaviour:
   Key: 0
   healthBar: {fileID: 1529135611}
   healthAmount: 100
-  invulnerabilitytimer: 4
   crouchSpeed: 1
   crouchYscale: 0.5
   jumpKey: 32
