@@ -8643,6 +8643,12 @@ MonoBehaviour:
   _waveInterval: 0
   _waveSpeed: 30
   _addColor: {r: 0, g: 0, b: 0, a: 1}
+  _addColor2: {r: 0, g: 0, b: 0, a: 1}
+  _Knife: {fileID: 1046675243}
+  _KnifeMaterial: {fileID: 0}
+  _Gas: {fileID: 1725500390}
+  _GasMaterial: {fileID: 2100000, guid: d07c0f0d0c2187f469721b9f1440ada2, type: 2}
+  _Key: {fileID: 47510543}
   shader: {fileID: 4800000, guid: 6d12e7ab487bf49d18b89038af741a18, type: 3}
 --- !u!114 &458733162
 MonoBehaviour:
