@@ -82,7 +82,7 @@ public class PlayerMov : MonoBehaviour
 
     public Key RustyKey;
     public string playerTag;
-    private KeyContainer keyContainer;
+    public KeyContainer keyContainer;
         
     [Header("Car Text")]
     public GameObject FuelText;
@@ -97,7 +97,6 @@ public class PlayerMov : MonoBehaviour
         sprinting,
         air
     }
-
     void Start()
     {
         readyToJump = true;
@@ -106,6 +105,7 @@ public class PlayerMov : MonoBehaviour
         rb.freezeRotation = true;
 
         startYScale = transform.localScale.y;
+        isHidden = false;
     }
 
     private void Update()
@@ -407,7 +407,7 @@ public class PlayerMov : MonoBehaviour
 
     private void Awake()
     {
-         keyContainer = GameObject.FindWithTag(playerTag).GetComponent<KeyContainer>();
+         isHidden = false;
     }
 
     IEnumerator startGameTimer()
