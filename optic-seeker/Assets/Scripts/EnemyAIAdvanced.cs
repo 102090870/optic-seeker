@@ -19,7 +19,7 @@ public class EnemyAIAdvanced : MonoBehaviour
 
     public LayerMask whatIsGround;
 
-    private float Attackcooldown = 1;
+    public float Attackcooldown;
     public float Attacktimer;
 
 
@@ -56,11 +56,14 @@ public class EnemyAIAdvanced : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (Attackcooldown <= 0)
+        if (collision.gameObject.tag == "Player")
         {
-            damage.TakeDamage(20);
-            Attackcooldown = Attacktimer;
+            if (Attackcooldown <= 0)
+            {
+                damage.TakeDamage(1);
+                Attackcooldown = Attacktimer;
 
+            }
         }
     }
 

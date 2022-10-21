@@ -43,7 +43,9 @@ public class PlayerMov : MonoBehaviour
     public float Key;
 
     [Header("Health")]
-    public Image healthBar;
+    public RawImage Heart1;
+    public RawImage Heart2;
+    public RawImage Heart3;
     public float healthAmount;
 
     [Header("Crouching")]
@@ -97,6 +99,10 @@ public class PlayerMov : MonoBehaviour
     }
     void Start()
     {
+        Heart1.enabled = true;
+        Heart2.enabled = true;
+        Heart3.enabled = true;
+
         readyToJump = true;
 
         rb = GetComponent<Rigidbody>();
@@ -108,10 +114,21 @@ public class PlayerMov : MonoBehaviour
 
     private void Update()
     {
+        if (healthAmount <= 2)
+        {
+            Heart3.enabled = false;
+        }
+
+        if (healthAmount <= 1)
+        {
+            Heart2.enabled = false;
+        }
+
         if (healthAmount <= 0)
         {
             Death();
         }
+
 
         // half player height + 0.2f and need the ground to have a layer mask
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 1f + 0.1f, whatIsGround);
@@ -343,7 +360,6 @@ public class PlayerMov : MonoBehaviour
     public void TakeDamage(float Damage)
     {
         healthAmount -= Damage;
-        healthBar.fillAmount = healthAmount / 100;
     }
 
     private void Death()
