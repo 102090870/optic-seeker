@@ -37,6 +37,10 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public GameObject fadeCanvas;
     private bool fadeCheck = false;
     public GDTFadeEffect fadeScript;
+	
+	public GameObject secondCanvas;
+	private bool secondCheck = false;
+	public GDTSecondEffect secondScript;
 
     private void Start()
     {
@@ -74,6 +78,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
             //blinking
             //fadeScript.lastColor = Color.white;
             fadeCanvas.SetActive(true);
+			secondCanvas.SetActive(false);
 
             TimeforCameraswitch = 2f;
             Disrupt1.enabled = false;
@@ -143,6 +148,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
       
         //blinking
         fadeCanvas.SetActive(false);
+		secondCanvas.SetActive(true);
     }
 
     private void isHiddenTimerEnded()
