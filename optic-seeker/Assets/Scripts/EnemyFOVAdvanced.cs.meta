@@ -3,7 +3,20 @@ guid: 54258531be69f464b967be51789c95c7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cam1: {instanceID: 0}
+  - cam2: {instanceID: 0}
+  - Disrupt1: {instanceID: 0}
+  - Disrupt2: {instanceID: 0}
+  - dosomething: {instanceID: 0}
+  - activateOutline: {instanceID: 0}
+  - Crosshair: {instanceID: 0}
+  - playerRef: {instanceID: 0}
+  - playerMov: {instanceID: 0}
+  - fadeCanvas: {instanceID: 0}
+  - fadeScript: {instanceID: 0}
+  - secondCanvas: {fileID: 4340539383612703543, guid: 46e6904ac337e264dac56a7be5631ca4, type: 3}
+  - secondScript: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
