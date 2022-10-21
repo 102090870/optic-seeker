@@ -10,17 +10,14 @@ public class Hide : MonoBehaviour
 
 
     public GameObject hideText;
-    private GameObject player;
     private GameObject model;
-    private PlayerMov playerMov;
+    public PlayerMov playerMov;
     private bool OnTrigger = false;
     private GameObject Char;
 
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerMov = player.GetComponent<PlayerMov>();
         Char = GameObject.Find("Mummy_char");
         thisCam.enabled = false;
 

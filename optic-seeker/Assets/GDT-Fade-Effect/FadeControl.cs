@@ -21,4 +21,9 @@ public class FadeControl : MonoBehaviour
             fadeEffect.SetActive(true);
         }
     }
+
+    //public void startScript()
+    //{
+    //    fadeEffect.SetActive(true);
+    //}
 }

@@ -26,6 +26,7 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class SonarFx : MonoBehaviour
 {
+    
     // Sonar mode (directional or spherical)
     public enum SonarMode { Directional, Spherical }
     [SerializeField] SonarMode _mode = SonarMode.Directional;
@@ -69,6 +70,23 @@ public class SonarFx : MonoBehaviour
     [SerializeField] Color _addColor = Color.black;
     public Color addColor { get { return _addColor; } set { _addColor = value; } }
 
+    // Additional color (emission)
+    [SerializeField] Color _addColor2 = Color.black;
+    public Color addColor2 { get { return _addColor2; } set { _addColor2 = value; } }
+
+
+    [SerializeField] GameObject _Knife;
+    public GameObject Knife { get { return _Knife; } set { _Knife = value; } }
+    [SerializeField] Material _KnifeMaterial;
+    public Material KnifeMaterial { get { return _KnifeMaterial; } set { _KnifeMaterial = value; } }
+    [SerializeField] GameObject _Gas;
+    public GameObject Gas { get { return _Gas; } set { _Gas = value; } }
+    [SerializeField] Material _GasMaterial;
+    public Material GasMaterial { get { return _GasMaterial; } set { _GasMaterial = value; } }
+    [SerializeField] GameObject _Key;
+    public GameObject Key { get { return Key; } set { Key = value; } }
+
+
     // Reference to the shader.
     [SerializeField] Shader shader;
 
@@ -103,10 +121,15 @@ public class SonarFx : MonoBehaviour
         waveParamsID = Shader.PropertyToID("_SonarWaveParams");
         waveVectorID = Shader.PropertyToID("_SonarWaveVector");
         addColorID = Shader.PropertyToID("_SonarAddColor");
+        Gas.GetComponent<MeshRenderer>().material = GasMaterial;
+        Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
+        
     }
 
     void OnEnable()
     {
+        Gas.GetComponent<MeshRenderer>().material = GasMaterial;
+        Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
         GetComponent<Camera>().SetReplacementShader(shader, null);
         Update();
     }
@@ -122,6 +145,10 @@ public class SonarFx : MonoBehaviour
         Shader.SetGlobalColor(waveColorID, _waveColor);
         Shader.SetGlobalColor(addColorID, _addColor);
         playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+
+        //Gas.GetComponent<Renderer>().material.shader = shaderOutline;
+        Gas.GetComponent<MeshRenderer>().material = GasMaterial;
+        Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
 
         if (coroutineCheck == false)
         {
@@ -146,6 +173,7 @@ public class SonarFx : MonoBehaviour
             Shader.EnableKeyword("SONAR_SPHERICAL");
             Shader.SetGlobalVector(waveVectorID, playerPosition);
         }
+        
     }
 }
 

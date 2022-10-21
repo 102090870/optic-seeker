@@ -45,8 +45,6 @@ public class PlayerMov : MonoBehaviour
     [Header("Health")]
     public Image healthBar;
     public float healthAmount;
-    private float invulnerability = 1;
-    public float invulnerabilitytimer;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -82,11 +80,13 @@ public class PlayerMov : MonoBehaviour
 
     public Key RustyKey;
     public string playerTag;
-    private KeyContainer keyContainer;
+    public KeyContainer keyContainer;
         
     [Header("Car Text")]
     public GameObject FuelText;
     public GameObject noFuelText;
+
+    public SonarFx sonar;
 
     public enum MovementState
     {
@@ -95,7 +95,6 @@ public class PlayerMov : MonoBehaviour
         sprinting,
         air
     }
-
     void Start()
     {
         readyToJump = true;
@@ -104,6 +103,7 @@ public class PlayerMov : MonoBehaviour
         rb.freezeRotation = true;
 
         startYScale = transform.localScale.y;
+        isHidden = false;
     }
 
     private void Update()
@@ -111,11 +111,6 @@ public class PlayerMov : MonoBehaviour
         if (healthAmount <= 0)
         {
             Death();
-        }
-            
-        if (invulnerability > 0)
-        {
-            invulnerability -= Time.deltaTime;
         }
 
         // half player height + 0.2f and need the ground to have a layer mask
@@ -320,13 +315,6 @@ public class PlayerMov : MonoBehaviour
                 Enemybehavior.enabled = false;
                 Enemybehavior2.enabled = true;
             }
-
-            if (Knife < 0.5f && invulnerability <= 0)
-            {
-                TakeDamage(20);
-                invulnerability = invulnerabilitytimer;
-                    
-            }
         }
 
         if (collision.gameObject.tag == "Key")
@@ -345,6 +333,9 @@ public class PlayerMov : MonoBehaviour
                 keyimage.enabled = false;
                 keyimagebackground.enabled = false;
                 //Debug.Log("DOOR HIT");
+                //cameraobject.enabled = true;
+                startGameTimer();
+                cameraobject.enabled = true;
             }
         }
     }
@@ -359,9 +350,9 @@ public class PlayerMov : MonoBehaviour
     {
         //Put function here to happen when the player runs out of health
         Destroy(gameObject);
+        SceneManager.LoadScene("LossEndScene");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        SceneManager.LoadScene("LossEndScene");
 
     }
     
@@ -402,7 +393,19 @@ public class PlayerMov : MonoBehaviour
 
     private void Awake()
     {
-         keyContainer = GameObject.FindWithTag(playerTag).GetComponent<KeyContainer>();
+         isHidden = false;
+    }
+
+    IEnumerator startGameTimer()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
+    public void startScriptTimer()
+    {
+        
+        startGameTimer();
+        cameraobject.enabled = true;
     }
 }
 

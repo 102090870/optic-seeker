@@ -36,6 +36,11 @@ public class SonarFxEditor : Editor
     SerializedProperty propWaveInterval;
     SerializedProperty propWaveSpeed;
     SerializedProperty propAddColor;
+    SerializedProperty _Knife;
+    SerializedProperty _KnifeMaterial;
+    SerializedProperty _Gas;
+    SerializedProperty _GasMaterial;
+    SerializedProperty _Key;
 
     void OnEnable()
     {
@@ -49,6 +54,11 @@ public class SonarFxEditor : Editor
         propWaveInterval  = serializedObject.FindProperty("_waveInterval");
         propWaveSpeed     = serializedObject.FindProperty("_waveSpeed");
         propAddColor      = serializedObject.FindProperty("_addColor");
+        _Knife = serializedObject.FindProperty("_Knife");
+        _KnifeMaterial = serializedObject.FindProperty("_KnifeMaterial");
+        _Gas = serializedObject.FindProperty("_Gas");
+        _GasMaterial = serializedObject.FindProperty("_GasMaterial");
+        _Key = serializedObject.FindProperty("_Key");
     }
 
     public override void OnInspectorGUI()
@@ -68,7 +78,12 @@ public class SonarFxEditor : Editor
             EditorGUILayout.PropertyField(propOrigin);
 
         EditorGUI.indentLevel--;
-
+        EditorGUILayout.LabelField("Interactable objects:");
+        EditorGUILayout.PropertyField(_Knife, new GUIContent("Knife"));
+        EditorGUILayout.PropertyField(_KnifeMaterial, new GUIContent("Knife Material"));
+        EditorGUILayout.PropertyField(_Gas, new GUIContent("Gas"));
+        EditorGUILayout.PropertyField(_GasMaterial, new GUIContent("Gas Material"));
+        EditorGUILayout.PropertyField(_Key, new GUIContent("Key"));
         EditorGUILayout.LabelField("Base Color");
         EditorGUI.indentLevel++;
         EditorGUILayout.PropertyField(propBaseColor, new GUIContent("Albedo"));

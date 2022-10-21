@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyFOVAdvanced2 : MonoBehaviour
 {
@@ -15,13 +16,13 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
     public FPSCAM2 Disrupt2;
     public EnemyAIAdvanced dosomething;
     public Outline activateOutline;
+    public RawImage Crosshair;
 
     public GameObject playerRef;
+    public PlayerMov playerMov;
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
-	
-	public GameObject fadeEffect;
 
     public bool canSeePlayer;
 
@@ -60,12 +61,21 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
 
         if (canSeePlayer)
         {
-            fadeEffect.SetActive(true);
-			dosomething.ChasePlayer();
+            dosomething.ChasePlayer();
+            TimeforCameraswitch = 2f;
         }
         else
         {
-            dosomething.Patroling2();
+            if (TimeforCameraswitch <= 1.0f && playerMov.isHidden == false)
+            {
+                timerEnded();
+
+            }
+            if (playerMov.isHidden == true)
+            {
+                isHiddenTimerEnded();
+
+            }
         }
     }
 
@@ -93,5 +103,14 @@ public class EnemyFOVAdvanced2 : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
+    }
+    private void timerEnded()
+    {
+        dosomething.Patroling2();
+    }
+
+    private void isHiddenTimerEnded()
+    {
+        dosomething.Patroling2();
     }
 }

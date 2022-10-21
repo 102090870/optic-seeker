@@ -12,7 +12,7 @@ public class PickupKey : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        keyContainer = GameObject.FindWithTag(playerTag).GetComponent<KeyContainer>();
+        keyContainer = GameObject.FindWithTag("Player").GetComponent<KeyContainer>();
     }
 
     public void Pickup()
@@ -25,6 +25,6 @@ public class PickupKey : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Pickup();
+        //Pickup();
     }
 }

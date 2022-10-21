@@ -65,6 +65,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, layerMask))
         {
+            //Debug.Log("hit:" + hit);
             bool inRange = Vector3.Distance(transform.position, hit.transform.position) <= distance;
 
             if (inRange)
@@ -72,6 +73,7 @@ public class PlayerInteraction : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     IInteractable interact = hit.transform.GetComponent<IInteractable>();
+                    //Debug.Log("interact is:" + interact);
 
                     if (interact != null)
                     {

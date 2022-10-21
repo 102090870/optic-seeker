@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23981009221239648}
   m_Layer: 0
   m_Name: Knife_LODC
-  m_TagString: Untagged
+  m_TagString: Knife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 23661461877488680}
   m_Layer: 0
   m_Name: Knife_LODB
-  m_TagString: Untagged
+  m_TagString: Knife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 23142331654804406}
   m_Layer: 0
   m_Name: Knife_LODA
-  m_TagString: Untagged
+  m_TagString: Knife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

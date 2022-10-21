@@ -19,13 +19,11 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public RawImage Crosshair;
 
     public GameObject playerRef;
-    private PlayerMov playerMov;
+    public PlayerMov playerMov;
 
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
-	
-	public GameObject fadeEffect;
 
     public bool canSeePlayer;
 
@@ -35,15 +33,21 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
     public float TimeforCameraswitch = 1.0f;
 
+    //public GDTFadeEffect fadeEffect;
+    public GameObject fadeCanvas;
+    private bool fadeCheck = false;
+    public GDTFadeEffect fadeScript;
+
     private void Start()
     {
+        //fadeScript = fadeCanvas.GetComponent<GDTFadeEffect>();
         Disrupt1.enabled = true;
         Disrupt2.enabled = false;
         activateOutline.enabled = false;
         cam1.enabled = true;
         cam2.enabled = false;
         playerRef = GameObject.FindGameObjectWithTag("Player");
-        playerMov = playerRef.GetComponent<PlayerMov>();
+        //playerMov = playerRef.GetComponent<PlayerMov>();
         StartCoroutine(FOVRoutine());
     }
 
@@ -65,7 +69,12 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
         if (canSeePlayer)
         {
-			Crosshair.enabled = false;
+            Crosshair.enabled = false;
+
+            //blinking
+            //fadeScript.lastColor = Color.white;
+            fadeCanvas.SetActive(true);
+
             TimeforCameraswitch = 2f;
             Disrupt1.enabled = false;
             Disrupt2.enabled = true;
@@ -73,20 +82,22 @@ public class EnemyFOVAdvanced : MonoBehaviour
             cam1.enabled = false;
             cam2.enabled = true;
             dosomething.ChasePlayer();
-			fadeEffect.SetActive(true);
+     
         }
         else
         {
             if (TimeforCameraswitch <= 1.0f && playerMov.isHidden == false)
             {
-                    timerEnded();
-                
+                timerEnded();
+
             }
             if (playerMov.isHidden == true)
             {
                 isHiddenTimerEnded();
 
             }
+
+
         }
     }
 
@@ -121,6 +132,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
     private void timerEnded()
     {
+       // fadeScript.lastColor = Color.white;
         Crosshair.enabled = true;
         Disrupt1.enabled = true;
         Disrupt2.enabled = false;
@@ -128,6 +140,9 @@ public class EnemyFOVAdvanced : MonoBehaviour
         cam1.enabled = true;
         cam2.enabled = false;
         dosomething.Patroling2();
+      
+        //blinking
+        fadeCanvas.SetActive(false);
     }
 
     private void isHiddenTimerEnded()
@@ -135,8 +150,13 @@ public class EnemyFOVAdvanced : MonoBehaviour
         Disrupt1.enabled = false;
         Disrupt2.enabled = false;
         activateOutline.enabled = false;
-        cam1.enabled = false;
+        cam1.enabled = true;
         cam2.enabled = false;
         dosomething.Patroling2();
+    }
+
+    IEnumerator fadeTimer()
+    {
+        yield return new WaitForSeconds(2);
     }
 }
