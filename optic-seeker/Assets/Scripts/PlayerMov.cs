@@ -351,7 +351,7 @@ public class PlayerMov : MonoBehaviour
                 keyimagebackground.enabled = false;
                 //Debug.Log("DOOR HIT");
                 //cameraobject.enabled = true;
-                startGameTimer();
+                //startGameTimer();
                 cameraobject.enabled = true;
             }
         }

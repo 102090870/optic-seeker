@@ -74,7 +74,8 @@ public class SonarFx : MonoBehaviour
     [SerializeField] Color _addColor2 = Color.black;
     public Color addColor2 { get { return _addColor2; } set { _addColor2 = value; } }
 
-
+    [SerializeField] GameObject _player;
+    public GameObject player { get { return _player; } set { _player = value; } }
     [SerializeField] GameObject _Knife;
     public GameObject Knife { get { return _Knife; } set { _Knife = value; } }
     [SerializeField] Material _KnifeMaterial;
@@ -107,7 +108,7 @@ public class SonarFx : MonoBehaviour
     IEnumerator intervalTimer()
     {
         coroutineCheck = true;
-        _waveInterval = 150;
+        _waveInterval = 40;
 
         yield return new WaitForSeconds(5);
         _waveInterval = 0;
@@ -116,20 +117,21 @@ public class SonarFx : MonoBehaviour
 
     void Awake()
     {
+        //Knife.GetComponent <MeshRenderer>().material = _KnifeMaterial;
         baseColorID = Shader.PropertyToID("_SonarBaseColor");
         waveColorID = Shader.PropertyToID("_SonarWaveColor");
         waveParamsID = Shader.PropertyToID("_SonarWaveParams");
         waveVectorID = Shader.PropertyToID("_SonarWaveVector");
         addColorID = Shader.PropertyToID("_SonarAddColor");
-        Gas.GetComponent<MeshRenderer>().material = GasMaterial;
-        Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
+        //Gas.GetComponent<MeshRenderer>().material = GasMaterial;
+        //Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
         
     }
 
     void OnEnable()
     {
-        Gas.GetComponent<MeshRenderer>().material = GasMaterial;
-        Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
+        //Gas.GetComponent<MeshRenderer>().material = GasMaterial;
+        //Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
         GetComponent<Camera>().SetReplacementShader(shader, null);
         Update();
     }
@@ -144,11 +146,12 @@ public class SonarFx : MonoBehaviour
         Shader.SetGlobalColor(baseColorID, _baseColor);
         Shader.SetGlobalColor(waveColorID, _waveColor);
         Shader.SetGlobalColor(addColorID, _addColor);
-        playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+        //playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+        playerPosition = player.transform.position;
 
         //Gas.GetComponent<Renderer>().material.shader = shaderOutline;
-        Gas.GetComponent<MeshRenderer>().material = GasMaterial;
-        Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
+        //Gas.GetComponent<MeshRenderer>().material = GasMaterial;
+        //Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
 
         if (coroutineCheck == false)
         {

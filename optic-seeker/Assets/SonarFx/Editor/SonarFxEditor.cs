@@ -36,6 +36,7 @@ public class SonarFxEditor : Editor
     SerializedProperty propWaveInterval;
     SerializedProperty propWaveSpeed;
     SerializedProperty propAddColor;
+    SerializedProperty _player;
     SerializedProperty _Knife;
     SerializedProperty _KnifeMaterial;
     SerializedProperty _Gas;
@@ -54,6 +55,7 @@ public class SonarFxEditor : Editor
         propWaveInterval  = serializedObject.FindProperty("_waveInterval");
         propWaveSpeed     = serializedObject.FindProperty("_waveSpeed");
         propAddColor      = serializedObject.FindProperty("_addColor");
+        _player = serializedObject.FindProperty("_player");
         _Knife = serializedObject.FindProperty("_Knife");
         _KnifeMaterial = serializedObject.FindProperty("_KnifeMaterial");
         _Gas = serializedObject.FindProperty("_Gas");
@@ -78,6 +80,7 @@ public class SonarFxEditor : Editor
             EditorGUILayout.PropertyField(propOrigin);
 
         EditorGUI.indentLevel--;
+        EditorGUILayout.PropertyField(_player, new GUIContent("Player"));
         EditorGUILayout.LabelField("Interactable objects:");
         EditorGUILayout.PropertyField(_Knife, new GUIContent("Knife"));
         EditorGUILayout.PropertyField(_KnifeMaterial, new GUIContent("Knife Material"));

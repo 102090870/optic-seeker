@@ -8721,17 +8721,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mode: 1
   _direction: {x: 0, y: 0, z: 1}
-  _origin: {x: 0, y: 0, z: 0}
+  _origin: {x: 100, y: 100, z: 100}
   _baseColor: {r: 0, g: 0, b: 0, a: 0}
   _waveColor: {r: 1, g: 1, b: 1, a: 0}
   _waveAmplitude: 40
   _waveExponent: 50
   _waveInterval: 0
-  _waveSpeed: 30
+  _waveSpeed: 15
   _addColor: {r: 0, g: 0, b: 0, a: 1}
   _addColor2: {r: 0, g: 0, b: 0, a: 1}
+  _player: {fileID: 1376334775}
   _Knife: {fileID: 1046675243}
-  _KnifeMaterial: {fileID: 0}
+  _KnifeMaterial: {fileID: 2100000, guid: dc5a1992d73728f43a162dd26c2379f3, type: 2}
   _Gas: {fileID: 1725500390}
   _GasMaterial: {fileID: 2100000, guid: d07c0f0d0c2187f469721b9f1440ada2, type: 2}
   _Key: {fileID: 47510543}
