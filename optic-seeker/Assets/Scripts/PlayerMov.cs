@@ -90,6 +90,11 @@ public class PlayerMov : MonoBehaviour
 
     public SonarFx sonar;
 
+    public AudioClip pickUpSound;
+    //public AudioSource playerWalking;
+    public AudioClip playerWalking;
+
+
     public enum MovementState
     {
         crouching,
@@ -150,9 +155,7 @@ public class PlayerMov : MonoBehaviour
             SceneManager.LoadScene("WinEndScene");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-
         }
-
 
     }
 
@@ -228,7 +231,6 @@ public class PlayerMov : MonoBehaviour
     {
         //calculate mov direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
         //on slope
         if (OnSlope() && !exitingSlope)
         {
@@ -245,7 +247,6 @@ public class PlayerMov : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpd * 10f * airMultiplier, ForceMode.Force);
 
         //turn off gravity while on slope
-
     }
 
     private void SpeedControl()
@@ -310,6 +311,9 @@ public class PlayerMov : MonoBehaviour
             knifeimagebackground.enabled = true;
             Destroy(collision.gameObject);
             Knife++;
+
+            GetComponent<AudioSource>().clip = pickUpSound;
+            GetComponent<AudioSource>().Play();
         }
 
 
@@ -319,6 +323,9 @@ public class PlayerMov : MonoBehaviour
             fuelimagebackground.enabled = true;
             Destroy(collision.gameObject);
             FuelTank++;
+
+            GetComponent<AudioSource>().clip = pickUpSound;
+            GetComponent<AudioSource>().Play();
         }
 
         if (collision.gameObject.tag == "Enemy")
@@ -341,6 +348,9 @@ public class PlayerMov : MonoBehaviour
             keyimage.enabled = true;
             keyimagebackground.enabled = true;
             Key++;
+
+            GetComponent<AudioSource>().clip = pickUpSound;
+            GetComponent<AudioSource>().Play();
         }
 
         if (collision.gameObject.tag == "Interactable")
@@ -349,9 +359,6 @@ public class PlayerMov : MonoBehaviour
             {
                 keyimage.enabled = false;
                 keyimagebackground.enabled = false;
-                //Debug.Log("DOOR HIT");
-                //cameraobject.enabled = true;
-                //startGameTimer();
                 cameraobject.enabled = true;
             }
         }

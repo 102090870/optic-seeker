@@ -42,6 +42,9 @@ public class EnemyFOVAdvanced : MonoBehaviour
 	private bool secondCheck = false;
 	public GDTSecondEffect secondScript;
 
+    public AudioSource breathing;
+    public AudioSource heartBeat;
+
     private void Start()
     {
         //fadeScript = fadeCanvas.GetComponent<GDTFadeEffect>();
@@ -87,7 +90,9 @@ public class EnemyFOVAdvanced : MonoBehaviour
             cam1.enabled = false;
             cam2.enabled = true;
             dosomething.ChasePlayer();
-     
+            //breathing.Play();
+            breathing.enabled = true;
+            heartBeat.enabled = true;
         }
         else
         {
@@ -98,6 +103,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
             }
             if (playerMov.isHidden == true)
             {
+                //breathing.Stop();
                 isHiddenTimerEnded();
 
             }
@@ -149,6 +155,9 @@ public class EnemyFOVAdvanced : MonoBehaviour
         //blinking
         fadeCanvas.SetActive(false);
 		secondCanvas.SetActive(true);
+        //breathing.Stop();
+        breathing.enabled = false;
+        heartBeat.enabled = false;
     }
 
     private void isHiddenTimerEnded()
