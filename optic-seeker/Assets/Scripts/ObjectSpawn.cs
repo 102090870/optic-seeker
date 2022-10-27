@@ -19,17 +19,24 @@ public class ObjectSpawn : MonoBehaviour
     void Start()
     {
         randomNumber = Random.Range(0, 90);
+        spawnIn();
     }
 
     // Update is called once per frame
     void Update()
+    {
+
+
+    }
+
+    void spawnIn()
     {
         if (randomNumber <= 30)
         {
             fuel.transform.position = fuelspawn1.position;
             knife.transform.position = knifespawn1.position;
         }
-        else if(randomNumber <= 60)
+        else if (randomNumber <= 60)
         {
             fuel.transform.position = fuelspawn2.position;
             knife.transform.position = knifespawn2.position;
@@ -39,6 +46,5 @@ public class ObjectSpawn : MonoBehaviour
             fuel.transform.position = fuelspawn3.position;
             knife.transform.position = knifespawn3.position;
         }
-
     }
 }
