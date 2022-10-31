@@ -98,6 +98,7 @@ public class PlayerMov : MonoBehaviour
     public RawImage detect2;
     public RawImage detect3;
 
+    public Animator playerAnim;
 
     public enum MovementState
     {
@@ -123,6 +124,7 @@ public class PlayerMov : MonoBehaviour
 
     private void Update()
     {
+        playerAnim.SetBool("isRun", true);
         if (healthAmount <= 2)
         {
             Heart3.enabled = false;

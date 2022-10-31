@@ -45,6 +45,8 @@ public class EnemyFOVAdvanced : MonoBehaviour
     public AudioSource breathing;
     public AudioSource heartBeat;
 
+    public Animator playerAnim;
+
     private void Start()
     {
         //fadeScript = fadeCanvas.GetComponent<GDTFadeEffect>();
@@ -93,6 +95,8 @@ public class EnemyFOVAdvanced : MonoBehaviour
     
             breathing.enabled = true;
             heartBeat.enabled = true;
+            playerAnim.SetBool("isRun", true);
+
         }
         else
         {
