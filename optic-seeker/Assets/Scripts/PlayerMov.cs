@@ -94,6 +94,10 @@ public class PlayerMov : MonoBehaviour
     //public AudioSource playerWalking;
     public AudioClip playerWalking;
 
+    public RawImage detect1;
+    public RawImage detect2;
+    public RawImage detect3;
+
 
     public enum MovementState
     {
@@ -307,6 +311,7 @@ public class PlayerMov : MonoBehaviour
     {
         if (collision.gameObject.tag == "Knife")
         {
+            detect1.enabled = false;
             knifeimage.enabled = true;
             knifeimagebackground.enabled = true;
             Destroy(collision.gameObject);
@@ -319,6 +324,7 @@ public class PlayerMov : MonoBehaviour
 
         if (collision.gameObject.tag == "Fuel")
         {
+            detect2.enabled = false;
             fuelimage.enabled = true;
             fuelimagebackground.enabled = true;
             Destroy(collision.gameObject);
@@ -343,6 +349,7 @@ public class PlayerMov : MonoBehaviour
 
         if (collision.gameObject.tag == "Key")
         {
+            detect3.enabled = false;
             keyContainer.keys.Add(RustyKey);
             Destroy(collision.gameObject);
             keyimage.enabled = true;

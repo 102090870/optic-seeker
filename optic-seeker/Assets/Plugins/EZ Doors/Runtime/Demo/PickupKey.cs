@@ -9,6 +9,7 @@ public class PickupKey : MonoBehaviour, IInteractable
     public Key key;
     public string playerTag;
     private KeyContainer keyContainer;
+    public RawImage detect;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class PickupKey : MonoBehaviour, IInteractable
 
     public void Pickup()
     {
+        detect.enabled = false;
         keyimage.enabled = true;
         keyimagebackground.enabled = true;
         keyContainer.keys.Add(key);

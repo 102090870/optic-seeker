@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.1715047, g: 1.3698361, b: 1.4740256, a: 1}
+  m_IndirectSpecularColor: {r: 1.171796, g: 1.3698118, b: 1.4745932, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -660,11 +660,37 @@ MonoBehaviour:
   keyimage: {fileID: 1567594346}
   key: {fileID: 11400000, guid: c742d4ed7d57ad34288d26a393c31493, type: 2}
   playerTag: Player
+  detect: {fileID: 258854528}
 --- !u!4 &47510548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3705028537381535112, guid: 78df1db2fbc8ec64f949fac0c05bf693, type: 3}
   m_PrefabInstance: {fileID: 703671140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &47510549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47510543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88035e057d106334cb6d9e447b5653bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 10
+  angle: 360
+  playerRef: {fileID: 0}
+  canSeePlayer: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 128
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 256
+  cam: {fileID: 458733159}
+  objectTransform: {fileID: 47510548}
+  detect1: {fileID: 258854528}
 --- !u!1001 &55056442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4910,6 +4936,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 19e3bec5d2084834e86823c680ab9eb1, type: 3}
   m_PrefabInstance: {fileID: 70724049}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &258854527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 258854530}
+  - component: {fileID: 258854529}
+  - component: {fileID: 258854528}
+  m_Layer: 5
+  m_Name: Spot 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &258854528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258854527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.9913932, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &258854529
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258854527}
+  m_CullTransparentMesh: 1
+--- !u!224 &258854530
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258854527}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.07682128, y: 0.07682128, z: 0.07682128}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 791562063}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 353.74976, y: -190}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &261145082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16802,6 +16901,7 @@ RectTransform:
   - {fileID: 1567594348}
   - {fileID: 2135734270}
   - {fileID: 612042398}
+  - {fileID: 258854530}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28339,6 +28439,9 @@ MonoBehaviour:
   sonar: {fileID: 0}
   pickUpSound: {fileID: 8300000, guid: b9117009175194770a83c25ac5188340, type: 3}
   playerWalking: {fileID: 8300000, guid: f720bc110b6914ea0a74b9fcdab252bb, type: 3}
+  detect1: {fileID: 2135734271}
+  detect2: {fileID: 612042399}
+  detect3: {fileID: 258854528}
 --- !u!54 &1376334778
 Rigidbody:
   m_ObjectHideFlags: 0
