@@ -359,7 +359,7 @@ public class PlayerMov : MonoBehaviour
             {
                 keyimage.enabled = false;
                 keyimagebackground.enabled = false;
-                cameraobject.enabled = true;
+                //cameraobject.enabled = true;
             }
         }
     }

@@ -5141,7 +5141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277762625}
   m_LocalRotation: {x: -0, y: 0.7424196, z: -0, w: -0.6699352}
-  m_LocalPosition: {x: 900.51447, y: 1.46, z: 550.49}
+  m_LocalPosition: {x: 891.9, y: 1.46, z: 489.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10826,7 +10826,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 41
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 57.15417, z: 0}
 --- !u!111 &546056568
 Animation:
   m_ObjectHideFlags: 0
@@ -11025,8 +11025,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -28274,8 +28274,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376334775}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 869.665, y: -4.63, z: 533.128}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 869.665, y: -4.630005, z: 533.128}
   m_LocalScale: {x: 1.3952607, y: 1.3952607, z: 1.3952607}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33268,6 +33268,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 562851033}
   anim: {fileID: 1585141656}
+  playerCam: {fileID: 458733159}
+  cutSceneCam: {fileID: 546056566}
+  cutSceneAnim: {fileID: 546056568}
+  playerCutscene: {fileID: 1000167875}
+  EnemyCutscene: {fileID: 110469485}
+  cameraobject: {fileID: 458733161}
 --- !u!111 &1585141656
 Animation:
   m_ObjectHideFlags: 0
@@ -37639,6 +37645,10 @@ PrefabInstance:
       value: GDT-Canvas-Fade-Object
       objectReference: {fileID: 0}
     - target: {fileID: 4340539383612703545, guid: ef9bab49b1e42aa4eba41b12071319e4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340539383612703545, guid: ef9bab49b1e42aa4eba41b12071319e4, type: 3}
       propertyPath: timeEffect
       value: 2.5
       objectReference: {fileID: 0}
@@ -37660,6 +37670,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4340539383612703545, guid: ef9bab49b1e42aa4eba41b12071319e4, type: 3}
       propertyPath: lastColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340539383612703545, guid: ef9bab49b1e42aa4eba41b12071319e4, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4340539383612703545, guid: ef9bab49b1e42aa4eba41b12071319e4, type: 3}
