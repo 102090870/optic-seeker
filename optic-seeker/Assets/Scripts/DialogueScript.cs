@@ -46,7 +46,7 @@ public class DialogueScript : MonoBehaviour
     public void playAnimation()
     {
 
-        if (cutSceneAnim.IsPlaying("Cutscene") == false)
+        if (cutSceneAnim.IsPlaying("Cutscene") == false && animationCheck4 == false)
         {
             playerCam.enabled = true;
             cutSceneCam.enabled = false;

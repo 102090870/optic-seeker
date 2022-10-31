@@ -90,7 +90,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
             cam1.enabled = false;
             cam2.enabled = true;
             dosomething.ChasePlayer();
-            //breathing.Play();
+    
             breathing.enabled = true;
             heartBeat.enabled = true;
         }

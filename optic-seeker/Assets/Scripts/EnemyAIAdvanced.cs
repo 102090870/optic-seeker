@@ -132,7 +132,7 @@ public class EnemyAIAdvanced : MonoBehaviour
 
         pausetime += Time.deltaTime;
 
-        if (pausetime < 2)
+        if (pausetime < 1)
         {
             agent.speed = 0;
             agent.angularSpeed = 0;
