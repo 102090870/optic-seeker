@@ -17,9 +17,7 @@ public class DialogueScript : MonoBehaviour
     public GameObject playerCutscene;
     public GameObject EnemyCutscene;
     public SonarFx cameraobject;
-    //public GameObject fadeCanvas;
-    ////public GDTSecondEffect fadeScript;
-    //public GDTFadeEffect fadeScript;
+
     void Awake()
     {
         animationCheck1 = false;
@@ -36,10 +34,6 @@ public class DialogueScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (cutSceneAnim.IsPlaying("Cutscene") == false)
-        //{
-        //    fadeCanvas.SetActive(true);
-        //}
         playAnimation();
     }
    

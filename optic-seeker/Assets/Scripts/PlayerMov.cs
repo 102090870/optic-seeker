@@ -93,6 +93,8 @@ public class PlayerMov : MonoBehaviour
     public AudioClip pickUpSound;
     //public AudioSource playerWalking;
     public AudioClip playerWalking;
+    public AudioSource breathing;
+    public AudioSource heartBeat;
 
     public RawImage detect1;
     public RawImage detect2;
@@ -346,6 +348,8 @@ public class PlayerMov : MonoBehaviour
                 cameraobject.enabled = false;
                 Enemybehavior.enabled = false;
                 Enemybehavior2.enabled = true;
+                breathing.enabled = false;
+                heartBeat.enabled = false;
             }
         }
 

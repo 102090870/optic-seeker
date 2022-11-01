@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 750
-  m_AmbientSkyColor: {r: 1, g: 0.9575472, b: 0.9575472, a: 1}
+  m_AmbientSkyColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
   m_AmbientEquatorColor: {r: 0.49253732, g: 0.49253732, b: 0.49253732, a: 1}
   m_AmbientGroundColor: {r: 0.49253732, g: 0.49253732, b: 0.49253732, a: 1}
   m_AmbientIntensity: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.1715047, g: 1.3698361, b: 1.4740256, a: 1}
+  m_IndirectSpecularColor: {r: 0.1207638, g: 0.1418553, b: 0.15280989, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -28518,6 +28518,8 @@ MonoBehaviour:
   sonar: {fileID: 0}
   pickUpSound: {fileID: 8300000, guid: b9117009175194770a83c25ac5188340, type: 3}
   playerWalking: {fileID: 8300000, guid: f720bc110b6914ea0a74b9fcdab252bb, type: 3}
+  breathing: {fileID: 277762635}
+  heartBeat: {fileID: 277762636}
   detect1: {fileID: 2135734271}
   detect2: {fileID: 612042399}
   detect3: {fileID: 258854528}

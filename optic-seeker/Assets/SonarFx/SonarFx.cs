@@ -117,23 +117,18 @@ public class SonarFx : MonoBehaviour
 
     void Awake()
     {
-        //Knife.GetComponent <MeshRenderer>().material = _KnifeMaterial;
         baseColorID = Shader.PropertyToID("_SonarBaseColor");
         waveColorID = Shader.PropertyToID("_SonarWaveColor");
         waveParamsID = Shader.PropertyToID("_SonarWaveParams");
         waveVectorID = Shader.PropertyToID("_SonarWaveVector");
         addColorID = Shader.PropertyToID("_SonarAddColor");
-        //Gas.GetComponent<MeshRenderer>().material = GasMaterial;
-        //Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
-        
     }
 
     void OnEnable()
     {
-        //Gas.GetComponent<MeshRenderer>().material = GasMaterial;
-        //Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
         GetComponent<Camera>().SetReplacementShader(shader, null);
         Update();
+
     }
 
     void OnDisable()
@@ -146,16 +141,12 @@ public class SonarFx : MonoBehaviour
         Shader.SetGlobalColor(baseColorID, _baseColor);
         Shader.SetGlobalColor(waveColorID, _waveColor);
         Shader.SetGlobalColor(addColorID, _addColor);
-        //playerPosition = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         playerPosition = player.transform.position;
-
-        //Gas.GetComponent<Renderer>().material.shader = shaderOutline;
-        //Gas.GetComponent<MeshRenderer>().material = GasMaterial;
-        //Gas.GetComponent<Renderer>().material.color = new Color(0, 204, 102);
+        Gas.GetComponent<Renderer>().material = GasMaterial;
+     
 
         if (coroutineCheck == false)
         {
-            //if (Input.GetButton("forward") || Input.GetButton("left") || Input.GetButton("backwards") || Input.GetButton("right"))
             if (Input.GetKey(jumpKey) || Input.GetKey(wKey) || Input.GetKey(aKey) || Input.GetKey(sKey) || Input.GetKey(dKey))
             {
                 StartCoroutine(intervalTimer());
