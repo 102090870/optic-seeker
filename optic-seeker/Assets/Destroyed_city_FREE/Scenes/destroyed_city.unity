@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1207638, g: 0.1418553, b: 0.15280989, a: 1}
+  m_IndirectSpecularColor: {r: 0.12079606, g: 0.14185327, b: 0.1528731, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -5351,6 +5351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 10
   angle: 100
+  Inventory: {fileID: 791562062}
   cam1: {fileID: 458733159}
   cam2: {fileID: 1529345961}
   Disrupt1: {fileID: 458733157}
@@ -8625,7 +8626,6 @@ GameObject:
   - component: {fileID: 428782026}
   - component: {fileID: 428782025}
   - component: {fileID: 428782024}
-  - component: {fileID: 428782023}
   m_Layer: 0
   m_Name: Knife_LODA
   m_TagString: Knife
@@ -8648,24 +8648,6 @@ Transform:
   m_Father: {fileID: 514601201}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &428782023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428782021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0.18660331, g: 1, b: 0, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &428782024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16997,7 +16979,6 @@ GameObject:
   - component: {fileID: 791562061}
   - component: {fileID: 791562060}
   - component: {fileID: 791562059}
-  - component: {fileID: 791562064}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -17113,31 +17094,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &791562064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791562058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88035e057d106334cb6d9e447b5653bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 0
-  angle: 0
-  playerRef: {fileID: 0}
-  canSeePlayer: 0
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 0
-  cam: {fileID: 0}
-  objectTransform: {fileID: 0}
-  detect1: {fileID: 0}
 --- !u!4 &803839604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 19e3bec5d2084834e86823c680ab9eb1, type: 3}
@@ -36939,24 +36895,6 @@ MonoBehaviour:
   degreesPerSecond: 15
   amplitude: 0.5
   frequency: 1
---- !u!114 &1725500396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725500390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!4 &1725500400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1987814901560157203, guid: 3028bdafdc13c1c4a911990395bbbce8, type: 3}

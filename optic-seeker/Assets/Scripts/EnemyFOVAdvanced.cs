@@ -9,6 +9,9 @@ public class EnemyFOVAdvanced : MonoBehaviour
     [Range(0, 360)]
     public float angle;
 
+    public Canvas Inventory;
+
+
     public Camera cam1;
     public Camera cam2;
 
@@ -78,6 +81,7 @@ public class EnemyFOVAdvanced : MonoBehaviour
 
         if (canSeePlayer)
         {
+            Inventory.enabled = false;
             Crosshair.enabled = false;
 
             //blinking
@@ -162,10 +166,12 @@ public class EnemyFOVAdvanced : MonoBehaviour
         //breathing.Stop();
         breathing.enabled = false;
         heartBeat.enabled = false;
+        Inventory.enabled = true;
     }
 
     private void isHiddenTimerEnded()
     {
+        Inventory.enabled = true;
         Disrupt1.enabled = false;
         Disrupt2.enabled = false;
         activateOutline.enabled = false;
